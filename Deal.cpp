@@ -60,11 +60,11 @@ void Deal::playing() {
     }
 }
 
-void Deal::scoring(){
+void Deal::scoring() {
     //Teams North-South and East-West
-    Team* Contracting, Defending;
+    Team *Contracting, *Defending;
     Contracting = _players[_contractor]->getTeam();
-    Defending = _players[(_contractor+1)%4]->getTeam();
+    Defending = _players[(_contractor + 1) % 4]->getTeam();
     //todo: counting points and adding them
     Contracting->newDeal();
     Defending->newDeal();
