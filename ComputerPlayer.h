@@ -6,11 +6,14 @@
 
 class ComputerPlayer : public Player {
 public:
-    ComputerPlayer(const string &name);
+    ComputerPlayer(const string name) : Player(name) {
+
+    }
 
 private:
-    Card* playCard();
-    Contract* proposeContract();
+    Card *playCard(Color::Type color, Color::Type trump_color);
+
+    Contract *proposeContract(Contract* current_max);
 
 };
 

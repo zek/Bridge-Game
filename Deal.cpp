@@ -23,7 +23,7 @@ void Deal::bidding() {
     Contract *tmp_c;
 
     while ((nbrOfPass < 3) || (nbrOfPass == 3 && _contract == nullptr)) {
-        tmp_c = _players[speaker]->proposeContract();
+        tmp_c = _players[speaker]->proposeContract(_contract);
         if (tmp_c == Contract::Pass()) {
             nbrOfPass++;
         } else if (_contract == nullptr || tmp_c > _contract) {
@@ -51,7 +51,7 @@ void Deal::playing() {
         current_trick = new Trick();
         for (int i = 0; i < 4; i++) {
             current_player = (first_player + i) % 4;
-            card_played = _players[current_player]->playCard(current_trick->getStartingColor());
+            card_played = _players[current_player]->playCard(current_trick->getStartingColor(), Color::NOTRUMP);//todo: need trump color
             current_trick->addCard(card_played, current_player);
         }
 
@@ -68,6 +68,13 @@ void Deal::scoring() {
     //todo: counting points and adding them
     Contracting->newDeal();
     Defending->newDeal();
+}
+
+void Deal::play() {
+    dealing();
+    bidding();
+    playing();
+    scoring();
 }
 
 

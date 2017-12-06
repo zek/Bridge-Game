@@ -1,20 +1,20 @@
 #include "Game.h"
-#include "Deal.h"
 
-array<Card *, 52> Game::getDeck() const {
-    return _deck;
-}
+array<Card *, 52> Game::_deck = {};
 
 Game::Game(array<Player *, 4> players) {
     _players = players;
     setTeams();
     setDeck(); // Todo: It should be setted once.
+
 }
 
 void Game::setDeck() {
-    for (CARDVALUE cardValue = CARDVALUE::TWO; cardValue <= CARDVALUE::ACE; cardValue++) {
-        for (COLOR color = COLOR::CLUB; cardValue <= COLOR::NOTRUMP; color++) {
-            _deck[cardValue] = new Card(cardValue, color);
+    int i = 0;
+    for (const auto cardValue : CardValue::All) {
+        for (const auto color : Color::All) {
+            _deck[i] = new Card(cardValue, color);
+            i++;
         }
     }
 }

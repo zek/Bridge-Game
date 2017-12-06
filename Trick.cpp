@@ -4,9 +4,9 @@ void Trick::addCard(Card *c, int p) {
     _cards.push_back(pair<Card *, int>(c, p));
 }
 
-COLOR Trick::getStartingColor() {
+Color::Type Trick::getStartingColor() {
     if (_cards.size() == 0) {
-        return COLOR::NOTRUMP;
+        return Color::NOTRUMP;
     } else {
         return _cards.front().first->getColor();
     }

@@ -14,13 +14,15 @@ private:
     list<pair<Card *, int>> _cards;
 
 public:
-    Trick();
+    Trick(){
+
+    }
 
     void addCard(Card *c, int p);
 
     int getWinner(Contract *c);
 
-    COLOR getStartingColor();
+    Color::Type getStartingColor();
 
 };
 

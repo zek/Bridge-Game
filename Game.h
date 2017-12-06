@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Team.h"
 #include "Card.h"
+#include "Deal.h"
 
 using namespace std;
 
@@ -20,7 +21,9 @@ private:
     void setTeams();
 
 public:
-    static array<Card *, 52> getDeck() const;
+    static array<Card *, 52> getDeck() {
+        return Game::_deck;
+    }
 
     Game(array<Player *, 4> players);
 

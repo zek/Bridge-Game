@@ -1,40 +1,41 @@
 #include "Contract.h"
 
-bool Contract::operator>(Contract *lhs, Contract *rhs) {
-    if (lhs->getTricksAmount() > rhs->getTricksAmount()) {
-        return true;
-    } else if (lhs->getTricksAmount() == rhs->getTricksAmount()) {
-        return lhs->getColor() > rhs->getColor();
-    }
-    return false;
-}
+Contract* Contract::_pass = new Contract();
 
-
-int Contract::getTricksAmount() {
+int Contract::getTricksAmount() const {
     return _tricksAmount;
 }
 
-bool Contract::getColor() {
+bool Contract::getColor() const {
     return _color;
 }
 
-bool Contract::operator<(Contract *lhs, Contract *rhs) {
-    if (lhs->getTricksAmount() < rhs->getTricksAmount()) {
+bool operator>(const Contract& lhs, const Contract& rhs) {
+    if (lhs.getTricksAmount() > rhs.getTricksAmount()) {
         return true;
-    } else if (lhs->getTricksAmount() == rhs->getTricksAmount()) {
-        return lhs->getColor() < rhs->getColor();
+    } else if (lhs.getTricksAmount() == rhs.getTricksAmount()) {
+        return lhs.getColor() > rhs.getColor();
     }
     return false;
 }
 
-bool Contract::operator==(Contract *lhs, Contract *rhs) {
-    return lhs->getColor() == rhs->getColor() && lhs->getTricksAmount() == rhs->getTricksAmount();
+bool operator<(const Contract& lhs, const Contract& rhs) {
+    if (lhs.getTricksAmount() < rhs.getTricksAmount()) {
+        return true;
+    } else if (lhs.getTricksAmount() == rhs.getTricksAmount()) {
+        return lhs.getColor() < rhs.getColor();
+    }
+    return false;
 }
 
-Contract::Contract(int amountOfTricks, COLOR color) {
-    if (amountOfTricks < 1){
+bool operator==(const Contract& lhs, const Contract& rhs) {
+    return lhs.getColor() == rhs.getColor() && lhs.getTricksAmount() == rhs.getTricksAmount();
+}
+
+Contract::Contract(int amountOfTricks, Color::Type color) {
+    if (amountOfTricks < 1) {
         _tricksAmount = 1;
-    } else if (amountOfTricks > 6){
+    } else if (amountOfTricks > 6) {
         _tricksAmount = 6;
     } else {
         _tricksAmount = amountOfTricks;
@@ -44,12 +45,9 @@ Contract::Contract(int amountOfTricks, COLOR color) {
 
 Contract::Contract() {
     _tricksAmount = 0;
-    _color = COLOR::NOTRUMP;
+    _color = Color::NOTRUMP;
 }
 
-Contract *Contract::Pass() const {
-    if (_pass==nullptr){
-        _pass = new Contract();
-    }
+Contract *Contract::Pass() {
     return _pass;
 }

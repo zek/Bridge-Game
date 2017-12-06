@@ -6,28 +6,22 @@
 class Contract {
 private:
     int _tricksAmount;
-    COLOR _color;
+    Color::Type _color;
     //Maybe an option, like double, etc ...
     static Contract *_pass;
 
     Contract();
 
 public:
-    static Contract *Pass() const;
+    static Contract *Pass();
 
-    Contract(int amountOfTricks, COLOR color);
+    Contract(int amountOfTricks, Color::Type color);
 
-    bool operator>(Contract *lhs, Contract *rhs);
-
-    bool operator<(Contract *lhs, Contract *rhs);
-
-    bool operator==(Contract *lhs, Contract *rhs);
-
-    int getTricksAmount();
+    int getTricksAmount() const;
     //void setOption(ContractOption co);
     //ContractOption getContractOption();
 
-    bool getColor();
+    bool getColor() const;
 };
 
 #endif // CONTRACT_H_INCLUDED
