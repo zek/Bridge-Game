@@ -1,16 +1,24 @@
 #include "ComputerPlayer.h"
 #include "misc.h"
-#include <algorithm>
 
 Card *ComputerPlayer::playCard(Color::Type color, Color::Type trump_color) {
     std::vector<Card *> available_cards;
     copy_if(_hand.begin(), _hand.end(), std::back_inserter(available_cards),
-            [color, trump_color](const Card *card) { return card->getColor() == color || card->getColor() == trump_color; });
+            [color, trump_color](const Card *card) {
+                return (card->getColor() == color) || (card->getColor() == trump_color);
+            });
 
-    vector<Card *>::iterator random_it = select_randomly(_hand.begin(), _hand.end());
-    Card *random = *random_it;
-    _hand.erase(random_it);
-    return random;
+    if (available_cards.size() == 0) {
+        vector<Card *>::iterator random_it = select_randomly(_hand.begin(), _hand.end());
+        Card *random = *random_it;
+        _hand.erase(random_it);
+        return random;
+    }else{
+        vector<Card *>::iterator random_it = select_randomly(available_cards.begin(), available_cards.end());
+        Card *random = *random_it;
+        _hand.erase(std::find_if(_hand.begin(), _hand.end(), [random](Card * p) -> bool { return random == p; }));
+        return random;
+    }
 }
 
 Contract *ComputerPlayer::proposeContract(Contract *current_max) {

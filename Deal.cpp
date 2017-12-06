@@ -21,7 +21,7 @@ void Deal::bidding() {
     int speaker = (_dealer + 1) % 4;
     int nbrOfPass = 0;
     Contract *tmp_c;
-
+    _contract = nullptr;
     while ((nbrOfPass < 3) || (nbrOfPass == 3 && _contract == nullptr)) {
         tmp_c = _players[speaker]->proposeContract(_contract);
         if (tmp_c == Contract::Pass()) {
@@ -36,6 +36,7 @@ void Deal::bidding() {
         }
         speaker = (speaker + 1) % 4;
     }
+
 }
 
 void Deal::playing() {
@@ -46,15 +47,22 @@ void Deal::playing() {
 
     //we play 13 tricks
     for (int round = 0; round < 13; round++) {
+
+
         //the four players have to play a trick
+        cout << "Round: " << round << endl;
         current_trick = new Trick();
         for (int i = 0; i < 4; i++) {
             current_player = (first_player + i) % 4;
-            card_played = _players[current_player]->playCard(current_trick->getStartingColor(), Color::NOTRUMP);//todo: need trump color
+            card_played = _players[current_player]->playCard(current_trick->getStartingColor(),
+                                                             Color::NOTRUMP);//todo: need trump color
+
+            cout << "Player:" << current_player << " " << *card_played << endl;
             current_trick->addCard(card_played, current_player);
         }
 
         first_player = current_trick->getWinner(_contract);
+        cout << "Winner: " << first_player << endl << endl;
         _players[first_player]->getTeam()->winTrick(current_trick);
     }
 }

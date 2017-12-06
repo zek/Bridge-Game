@@ -6,7 +6,7 @@ int Contract::getTricksAmount() const {
     return _tricksAmount;
 }
 
-bool Contract::getColor() const {
+Color::Type Contract::getColor() const {
     return _color;
 }
 

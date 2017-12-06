@@ -21,7 +21,7 @@ public:
     //void setOption(ContractOption co);
     //ContractOption getContractOption();
 
-    bool getColor() const;
+    Color::Type getColor() const;
 };
 
 #endif // CONTRACT_H_INCLUDED
