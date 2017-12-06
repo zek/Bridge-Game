@@ -3,16 +3,16 @@
 
 #include "Color.h"
 
-enum CardValue {
-    two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
+enum CARDVALUE {
+    TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
 };
 
 class Card {
 private:
-    CardValue _value;
-    Color _color;
+    CARDVALUE _value;
+    COLOR _color;
 public:
-    Card(CardValue value, Color color){
+    Card(CARDVALUE value, COLOR color){
         _value = value;
         _color = color;
     }
