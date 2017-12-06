@@ -1,14 +1,20 @@
-#ifndef CARD_H_INCLUDED
-#define CARD_H_INCLUDED
+#ifndef FINAL_CARD_H
+#define FINAL_CARD_H
 
-class Card{
-    private:
-        CardValue* _value;
-        Color* _color;
-
-    public:
-        Card(CardValue* value, Color* color);
-        string toString();
+enum CardValue {
+    two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
 };
 
-#endif // CARD_H_INCLUDED
+class Card {
+private:
+    CardValue _value;
+    Color _color;
+public:
+    Card(CardValue value, Color color){
+        _value = value;
+        _color = color;
+    }
+};
+
+
+#endif //FINAL_CARD_H
