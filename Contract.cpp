@@ -3,8 +3,8 @@
 bool Contract::operator>(Contract *lhs, Contract *rhs) {
     if (lhs->getTricksAmount() > rhs->getTricksAmount()) {
         return true;
-    } else if (lhs->getTricksAmount() > rhs->getTricksAmount()) {
-        return lhs->getColor() > lhs->getColor();
+    } else if (lhs->getTricksAmount() == rhs->getTricksAmount()) {
+        return lhs->getColor() > rhs->getColor();
     }
     return false;
 }
@@ -19,7 +19,12 @@ bool Contract::getColor() {
 }
 
 bool Contract::operator<(Contract *lhs, Contract *rhs) {
-    return !operator>(lhs, rhs);
+    if (lhs->getTricksAmount() < rhs->getTricksAmount()) {
+        return true;
+    } else if (lhs->getTricksAmount() == rhs->getTricksAmount()) {
+        return lhs->getColor() < rhs->getColor();
+    }
+    return false;
 }
 
 bool Contract::operator==(Contract *lhs, Contract *rhs) {
@@ -27,7 +32,13 @@ bool Contract::operator==(Contract *lhs, Contract *rhs) {
 }
 
 Contract::Contract(int amountOfTricks, COLOR color) {
-    _tricksAmount = amountOfTricks;
+    if (amountOfTricks < 1){
+        _tricksAmount = 1;
+    } else if (amountOfTricks > 6){
+        _tricksAmount = 6;
+    } else {
+        _tricksAmount = amountOfTricks;
+    }
     _color = color;
 }
 
@@ -37,5 +48,8 @@ Contract::Contract() {
 }
 
 Contract *Contract::Pass() const {
-    return new Contract(); // Todo: Should be singleton
+    if (_pass==nullptr){
+        _pass = new Contract();
+    }
+    return _pass;
 }
