@@ -12,17 +12,19 @@ class Game {
 private:
     array<Player *, 4> _players;
     array<Team *, 2> _teams;
-    array<Card *, 52> _deck;
+
+    static array<Card *, 52> _deck;
+
+    void setDeck();
+
+    void setTeams();
+
 public:
     static array<Card *, 52> getDeck() const;
 
-    Game(array<Player *, 4> players) : _players(players) {
+    Game(array<Player *, 4> players);
 
-        Team *team1 = new Team(players[0], players[2]);
-        Team *team2 = new Team(players[1], players[3]);
-        _teams = {team1, team2};
-
-    }
+    void play();
 };
 
 
