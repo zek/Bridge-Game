@@ -7,12 +7,12 @@ enum CardValue {
 
 class Card {
 private:
-    CardValue value;
-    Color color;
+    CardValue _value;
+    Color _color;
 public:
-    Card(CardValue v, Color c){
-        value = v;
-        color = c;
+    Card(CardValue value, Color color){
+        _value = value;
+        _color = color;
     }
 };
 

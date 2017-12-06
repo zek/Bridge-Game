@@ -7,9 +7,9 @@
 
 class Team {
 private:
-    array<Player*, 2> players;
-    list<Trick *> tricksWon;
-    int gameScore;
+    array<Player*, 2> _players;
+    list<Trick *> _tricksWon;
+    int _gameScore;
 public:
     int winTrick(Trick *t);
 

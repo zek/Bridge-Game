@@ -9,10 +9,10 @@ using namespace std;
 
 class Player {
 protected:
-    list<Card> hand;
-    Team* team;
-    bool isDummy;
-    string name;
+    list<Card> _hand;
+    Team* _team;
+    bool _isDummy;
+    string _name;
 public:
     void giveCard();
     virtual Card* playCard() = 0;

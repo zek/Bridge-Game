@@ -10,9 +10,9 @@ using namespace std;
 
 class Game {
 private:
-    array<Player *, 4> players;
-    Team teams[];
-    array<Card *, 52> deck;
+    array<Player *, 4> _players;
+    Team _teams[];
+    array<Card *, 52> _deck;
 public:
     static array<Card *, 52> getDeck() const {
 

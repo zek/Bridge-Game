@@ -10,8 +10,8 @@ using namespace std;
 
 class Trick {
 private:
-    list<Card*> cards;
-    list<Player*> players;
+    list<Card*> _cards;
+    list<Player*> _players;
 public:
     void addCard();
     Player* getWinner(Contract c);
