@@ -201,7 +201,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+hand: List<Card>",
+											"text": "+hand: List<Card*>",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2487,34 +2487,6 @@
 										},
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFgB9h4cyEaeDc=",
-											"_parent": {
-												"$ref": "AAAAAAFgB9OSVSDLzr4="
-											},
-											"model": {
-												"$ref": "AAAAAAFgB9h4SCEXzFU="
-											},
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 397,
-											"top": 389,
-											"width": 359,
-											"height": 13,
-											"autoResize": false,
-											"underline": false,
-											"text": "+dummy: Player",
-											"horizontalAlignment": 0,
-											"verticalAlignment": 5
-										},
-										{
-											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFgB9ik9CEhSXw=",
 											"_parent": {
 												"$ref": "AAAAAAFgB9OSVSDLzr4="
@@ -2532,68 +2504,12 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 397,
-											"top": 404,
+											"top": 389,
 											"width": 359,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+contractor: Player",
-											"horizontalAlignment": 0,
-											"verticalAlignment": 5
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFgB9j+ISEoHhg=",
-											"_parent": {
-												"$ref": "AAAAAAFgB9OSVSDLzr4="
-											},
-											"model": {
-												"$ref": "AAAAAAFgB9j98iElFyA="
-											},
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 397,
-											"top": 419,
-											"width": 359,
-											"height": 13,
-											"autoResize": false,
-											"underline": false,
-											"text": "+declaringSide: Team",
-											"horizontalAlignment": 0,
-											"verticalAlignment": 5
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFgB9laFiEvMu8=",
-											"_parent": {
-												"$ref": "AAAAAAFgB9OSVSDLzr4="
-											},
-											"model": {
-												"$ref": "AAAAAAFgB9lZ7SEsiWY="
-											},
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 397,
-											"top": 434,
-											"width": 359,
-											"height": 13,
-											"autoResize": false,
-											"underline": false,
-											"text": "+defenders: Team",
+											"text": "+contractor: int",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -2616,12 +2532,40 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 397,
-											"top": 449,
+											"top": 404,
 											"width": 359,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
 											"text": "+dealer: int",
+											"horizontalAlignment": 0,
+											"verticalAlignment": 5
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFgLEl1SApoRY4=",
+											"_parent": {
+												"$ref": "AAAAAAFgB9OSVSDLzr4="
+											},
+											"model": {
+												"$ref": "AAAAAAFgLEl08AplB/g="
+											},
+											"visible": true,
+											"enabled": true,
+											"lineColor": "#000000",
+											"fillColor": "#ffffff",
+											"fontColor": "#000000",
+											"font": "Arial;13;0",
+											"showShadow": true,
+											"containerChangeable": false,
+											"containerExtending": false,
+											"left": 397,
+											"top": 419,
+											"width": 359,
+											"height": 13,
+											"autoResize": false,
+											"underline": false,
+											"text": "+players: Player[4]",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -2638,7 +2582,7 @@
 									"left": 392,
 									"top": 369,
 									"width": 369,
-									"height": 98,
+									"height": 68,
 									"autoResize": false
 								},
 								{
@@ -2670,7 +2614,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 397,
-											"top": 472,
+											"top": 442,
 											"width": 359,
 											"height": 13,
 											"autoResize": false,
@@ -2698,7 +2642,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 397,
-											"top": 487,
+											"top": 457,
 											"width": 359,
 											"height": 13,
 											"autoResize": false,
@@ -2726,7 +2670,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 397,
-											"top": 502,
+											"top": 472,
 											"width": 359,
 											"height": 13,
 											"autoResize": false,
@@ -2754,7 +2698,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 397,
-											"top": 517,
+											"top": 487,
 											"width": 359,
 											"height": 13,
 											"autoResize": false,
@@ -2782,7 +2726,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 397,
-											"top": 532,
+											"top": 502,
 											"width": 359,
 											"height": 13,
 											"autoResize": false,
@@ -2802,7 +2746,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 392,
-									"top": 467,
+									"top": 437,
 									"width": 369,
 									"height": 83,
 									"autoResize": false
@@ -4226,7 +4170,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": "List<Card>",
+							"type": "List<Card*>",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -5037,26 +4981,6 @@
 						},
 						{
 							"_type": "UMLAttribute",
-							"_id": "AAAAAAFgB9h4SCEXzFU=",
-							"_parent": {
-								"$ref": "AAAAAAFgB9OSUyDDaAw="
-							},
-							"name": "dummy",
-							"visibility": "public",
-							"isStatic": false,
-							"isLeaf": false,
-							"type": {
-								"$ref": "AAAAAAFgB8T/DR7U2kM="
-							},
-							"isReadOnly": false,
-							"isOrdered": false,
-							"isUnique": false,
-							"isDerived": false,
-							"aggregation": "none",
-							"isID": false
-						},
-						{
-							"_type": "UMLAttribute",
 							"_id": "AAAAAAFgB9ikyyEem38=",
 							"_parent": {
 								"$ref": "AAAAAAFgB9OSUyDDaAw="
@@ -5065,49 +4989,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": {
-								"$ref": "AAAAAAFgB8T/DR7U2kM="
-							},
-							"isReadOnly": false,
-							"isOrdered": false,
-							"isUnique": false,
-							"isDerived": false,
-							"aggregation": "none",
-							"isID": false
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAFgB9j98iElFyA=",
-							"_parent": {
-								"$ref": "AAAAAAFgB9OSUyDDaAw="
-							},
-							"name": "declaringSide",
-							"visibility": "public",
-							"isStatic": false,
-							"isLeaf": false,
-							"type": {
-								"$ref": "AAAAAAFgB8r4MR/oyWE="
-							},
-							"isReadOnly": false,
-							"isOrdered": false,
-							"isUnique": false,
-							"isDerived": false,
-							"aggregation": "none",
-							"isID": false
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAFgB9lZ7SEsiWY=",
-							"_parent": {
-								"$ref": "AAAAAAFgB9OSUyDDaAw="
-							},
-							"name": "defenders",
-							"visibility": "public",
-							"isStatic": false,
-							"isLeaf": false,
-							"type": {
-								"$ref": "AAAAAAFgB8r4MR/oyWE="
-							},
+							"type": "int",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -5126,6 +5008,27 @@
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "int",
+							"isReadOnly": false,
+							"isOrdered": false,
+							"isUnique": false,
+							"isDerived": false,
+							"aggregation": "none",
+							"isID": false
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFgLEl08AplB/g=",
+							"_parent": {
+								"$ref": "AAAAAAFgB9OSUyDDaAw="
+							},
+							"name": "players",
+							"visibility": "public",
+							"isStatic": false,
+							"isLeaf": false,
+							"type": {
+								"$ref": "AAAAAAFgB8T/DR7U2kM="
+							},
+							"multiplicity": "4",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -5156,6 +5059,7 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
+									"type": "",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -5171,6 +5075,7 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
+									"type": "",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -5186,6 +5091,7 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
+									"type": "",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
