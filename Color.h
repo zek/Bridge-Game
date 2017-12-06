@@ -1,7 +1,8 @@
 #ifndef COLOR_H_INCLUDED
 #define COLOR_H_INCLUDED
 
-class Color {
+enum COLOR {
+    CLUB, DIAMOND, HEART, SPADE, NOTRUMP
 };
 
 #endif // COLOR_H_INCLUDED
