@@ -15,26 +15,15 @@ private:
 public:
     Team(Player *player1, Player *player2);
 
-    int winTrick(Trick *t) {
-        return 0;
-    }
+    void winTrick(Trick *t);
 
-    int getGameScore() {
-        return 0;
-    }
+    int getGameScore();
 
-    void addToGameScore(int n) {
+    void addToGameScore(int n);
 
-    }
+    void newDeal();
 
-    void newDeal() {
-
-    }
-
-    list<Trick *> getWonTricks() {
-        list<Trick *> list;
-        return list;
-    }
+    list<Trick *> getWonTricks();
 
 };
 

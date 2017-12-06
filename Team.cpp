@@ -7,23 +7,23 @@ Team::Team(Player *player1, Player *player2) {
     _gameScore = 0;
 }
 
-void Team::winTrick(Trick* tr){
+void Team::winTrick(Trick *tr) {
     _tricksWon.push_back(tr);
 }
 
-int Team::getGameScore(){
+int Team::getGameScore() {
     return _gameScore;
 }
 
-void Team::addToGameScore(int n){
+void Team::addToGameScore(int n) {
     _gameScore += n;
 }
 
-void Team::newDeal(){
+void Team::newDeal() {
     _tricksWon.clear();
 }
 
-list<Trick *> Team::getWonTricks(){
+list<Trick *> Team::getWonTricks() {
     return _tricksWon;
 }
 
