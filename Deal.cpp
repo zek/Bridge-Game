@@ -55,7 +55,7 @@ void Deal::playing() {
             card_played = _players[current_player]->playCard(current_trick->getStartingColor(),
                                                              Color::NOTRUMP);//todo: need trump color
 
-            cout << "Player:" << current_player << " " << *card_played << endl;
+            cout << *_players[current_player] << ": " << *card_played << endl;
             current_trick->addCard(card_played, current_player);
         }
 
