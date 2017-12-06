@@ -1,6 +1,6 @@
 #include "Player.h"
 
-void Player::giveCard() {
+void Player::giveCard(Card* card) {
 
 }
 

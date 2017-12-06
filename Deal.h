@@ -4,6 +4,10 @@
 #include "Contract.h"
 #include "Player.h"
 
+#include <iostream>
+
+using namespace std;
+
 class Deal {
 private:
     Contract *_contract;

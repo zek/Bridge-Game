@@ -9,15 +9,18 @@
 
 using namespace std;
 
-class Trick{
-    private:
-        list<pair<Card*, int>> _cards;
+class Trick {
+private:
+    list<pair<Card *, int>> _cards;
 
-    public:
-        Trick();
-        void addCard(Card* c, int p);
-        int getWinner(Contract* c);
-        Color* getStartingColor();
+public:
+    Trick();
+
+    void addCard(Card *c, int p);
+
+    int getWinner(Contract *c);
+
+    COLOR getStartingColor();
 
 };
 

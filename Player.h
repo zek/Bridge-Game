@@ -14,9 +14,9 @@ protected:
     bool _isDummy = false;
     string _name;
 public:
-    void giveCard();
+    void giveCard(Card *card);
 
-    virtual Card *playCard() = 0;
+    virtual Card *playCard(COLOR) = 0;
 
     void discardHand();
 
@@ -35,6 +35,7 @@ public:
     Team *getTeam() {
         return _team;
     }
+
 };
 
 
