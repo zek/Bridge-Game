@@ -1,13 +1,13 @@
 #ifndef FINAL_TEAM_H
 #define FINAL_TEAM_H
 
-
+#include <array>
 #include "Player.h"
 #include "Trick.h"
 
 class Team {
 private:
-    Player *players[2];
+    array<Player*, 2> players;
     list<Trick *> tricksWon;
     int gameScore;
 public:

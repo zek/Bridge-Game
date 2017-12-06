@@ -10,11 +10,11 @@ using namespace std;
 
 class Game {
 private:
-    Player players[];
+    array<Player *, 4> players;
     Team teams[];
-    array<Card, 52> deck;
+    array<Card *, 52> deck;
 public:
-    static array<Card, 52> getDeck() const {
+    static array<Card *, 52> getDeck() const {
 
     }
 };
