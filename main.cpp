@@ -13,6 +13,7 @@ int main() {
     array<Player*, 4> players = {p1, p2, p3, p4};
 
     Game game = Game(players);
+    game.play();
 
     return 0;
 }
