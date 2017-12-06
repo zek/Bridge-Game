@@ -5,13 +5,16 @@
 #include "Player.h"
 #include "Trick.h"
 
+using namespace std;
+
 class Team {
 private:
     array<Player *, 2> _players;
     list<Trick *> _tricksWon;
     int _gameScore;
+
 public:
-    int winTrick(Trick *t);
+    void winTrick(Trick *t);
 
     int getGameScore();
 
