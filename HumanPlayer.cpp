@@ -1,6 +1,6 @@
 #include "HumanPlayer.h"
 
-Contract HumanPlayer::proposeContract() {
+Contract* HumanPlayer::proposeContract() {
     return nullptr;
 }
 

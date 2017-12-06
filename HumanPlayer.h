@@ -10,7 +10,7 @@ public:
     HumanPlayer(const string &name);
 
 private:
-    Contract proposeContract();
+    Contract* proposeContract();
 
     Card* playCard();
 

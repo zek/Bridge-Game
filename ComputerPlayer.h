@@ -10,7 +10,7 @@ public:
 
 private:
     Card* playCard();
-    Contract proposeContract();
+    Contract* proposeContract();
 
 };
 
