@@ -5,7 +5,11 @@
 #include "Player.h"
 #include "Card.h"
 
-class HumanPlayer : Player {
+class HumanPlayer : public Player {
+public:
+    HumanPlayer(const string &name);
+
+private:
     Contract proposeContract();
 
     Card* playCard();

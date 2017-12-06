@@ -1,6 +1,8 @@
 #ifndef FINAL_CARD_H
 #define FINAL_CARD_H
 
+#include "Color.h"
+
 enum CardValue {
     two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
 };

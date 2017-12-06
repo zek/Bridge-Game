@@ -7,3 +7,5 @@ Contract HumanPlayer::proposeContract() {
 Card *HumanPlayer::playCard() {
     return nullptr;
 }
+
+HumanPlayer::HumanPlayer(const string &name) : Player(name) {}

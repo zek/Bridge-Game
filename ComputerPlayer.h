@@ -4,7 +4,11 @@
 
 #include "Player.h"
 
-class ComputerPlayer : Player {
+class ComputerPlayer : public Player {
+public:
+    ComputerPlayer(const string &name);
+
+private:
     Card* playCard();
     Contract proposeContract();
 

@@ -9,16 +9,28 @@ using namespace std;
 
 class Player {
 protected:
-    list<Card> _hand;
-    Team* _team;
-    bool _isDummy;
+    list<Card> _hand = nullptr;
+    Team *_team = nullptr;
+    bool _isDummy = false;
     string _name;
 public:
     void giveCard();
-    virtual Card* playCard() = 0;
+
+    virtual Card *playCard() = 0;
+
     void discardHand();
+
     void displayHand();
-    virtual Contract proposeContract() = 0;
+
+    virtual Contract* proposeContract() = 0;
+
+    Player(string name) : _name(name) {
+
+    }
+
+    void setTeam(Team* team){
+        _team = team;
+    }
 };
 
 

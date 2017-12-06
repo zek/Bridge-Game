@@ -1,6 +1,14 @@
 #ifndef TRICK_H_INCLUDED
 #define TRICK_H_INCLUDED
 
+#include "Card.h"
+#include "Color.h"
+#include "Contract.h"
+#include <utility>
+#include <list>
+
+using namespace std;
+
 class Trick{
     private:
         list<pair<Card*, int>> _cards;

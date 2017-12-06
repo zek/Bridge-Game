@@ -7,7 +7,7 @@
 
 class Team {
 private:
-    array<Player*, 2> _players;
+    array<Player *, 2> _players;
     list<Trick *> _tricksWon;
     int _gameScore;
 public:
@@ -20,6 +20,8 @@ public:
     void newDeal();
 
     list<Trick *> getWonTricks();
+
+    Team(Player *player1, Player *player2);
 };
 
 
