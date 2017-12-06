@@ -9,13 +9,9 @@ public:
     HumanPlayer(const string name) : Player(name) {}
 
 private:
-    Contract *proposeContract(Contract* current_max) {
-        return nullptr;
-    }
+    Contract *proposeContract(Contract* current_max);
 
-    Card *playCard(Color::Type color, Color::Type trump_color) {
-        return nullptr;
-    }
+    Card *playCard(Color::Type color, Color::Type trump_color);
 
 };
 

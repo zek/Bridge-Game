@@ -29,3 +29,7 @@ Contract *ComputerPlayer::proposeContract(Contract *current_max) {
         return Contract::Pass();
     }
 }
+
+ComputerPlayer::ComputerPlayer(const string name) : Player(name) {
+
+}

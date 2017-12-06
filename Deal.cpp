@@ -47,8 +47,6 @@ void Deal::playing() {
 
     //we play 13 tricks
     for (int round = 0; round < 13; round++) {
-
-
         //the four players have to play a trick
         cout << "Round: " << round << endl;
         current_trick = new Trick();
@@ -65,6 +63,7 @@ void Deal::playing() {
         cout << "Winner: " << first_player << endl << endl;
         _players[first_player]->getTeam()->winTrick(current_trick);
     }
+
 }
 
 void Deal::scoring() {

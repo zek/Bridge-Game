@@ -13,7 +13,6 @@ class Game {
 private:
     array<Player *, 4> _players;
     array<Team *, 2> _teams;
-
     static array<Card *, 52> _deck;
 
     void setDeck();
@@ -21,9 +20,7 @@ private:
     void setTeams();
 
 public:
-    static array<Card *, 52> getDeck() {
-        return Game::_deck;
-    }
+    static array<Card *, 52> getDeck();
 
     Game(array<Player *, 4> players);
 

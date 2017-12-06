@@ -34,3 +34,7 @@ void Game::play() {
         isFinished = true;
     }
 }
+
+array<Card *, 52> Game::getDeck() {
+    return Game::_deck;
+}
