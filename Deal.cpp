@@ -60,7 +60,7 @@ void Deal::playing() {
         }
 
         first_player = current_trick->getWinner(_contract);
-        cout << "Winner: " << first_player << endl << endl;
+        cout << "Winner: " << *_players[first_player] << endl << endl;
         _players[first_player]->getTeam()->winTrick(current_trick);
     }
 
