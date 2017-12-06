@@ -22,14 +22,18 @@ public:
 
     void displayHand();
 
-    virtual Contract* proposeContract() = 0;
+    virtual Contract *proposeContract() = 0;
 
     Player(string name) : _name(name) {
 
     }
 
-    void setTeam(Team* team){
+    void setTeam(Team *team) {
         _team = team;
+    }
+
+    Team *getTeam() {
+        return _team;
     }
 };
 
