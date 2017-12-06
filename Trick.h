@@ -14,10 +14,6 @@ private:
     list<pair<Card *, int>> _cards;
 
 public:
-    Trick(){
-
-    }
-
     void addCard(Card *c, int p);
 
     int getWinner(Contract *c);

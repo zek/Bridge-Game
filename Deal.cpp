@@ -46,7 +46,6 @@ void Deal::playing() {
 
     //we play 13 tricks
     for (int round = 0; round < 13; round++) {
-
         //the four players have to play a trick
         current_trick = new Trick();
         for (int i = 0; i < 4; i++) {
