@@ -7,7 +7,7 @@ Deal::Deal(array<Card *, 52> deck, array<Player *, 4> players, int dealer) :
 
 void Deal::dealing() {
     //shuffling
-    shuffle();
+    random_shuffle(begin(_deck), end(_deck));
 
     //distribution
     int i = (_dealer + 1) % 4;
@@ -31,7 +31,7 @@ void Deal::bidding() {
             _contract = tmp_c;
             _contractor = speaker;
         } else {
-            cout << "Error, contract lower than the previous one\n";
+            cout << "Error, contract lower than the previous one" << endl;
             nbrOfPass++;
         }
         speaker = (speaker + 1) % 4;
@@ -58,6 +58,16 @@ void Deal::playing() {
         first_player = current_trick->getWinner(_contract);
         _players[first_player]->getTeam()->winTrick(current_trick);
     }
+}
+
+void Deal::scoring(){
+    //Teams North-South and East-West
+    Team* Contracting, Defending;
+    Contracting = _players[_contractor]->getTeam();
+    Defending = _players[(_contractor+1)%4]->getTeam();
+    //todo: counting points and adding them
+    Contracting->newDeal();
+    Defending->newDeal();
 }
 
 
