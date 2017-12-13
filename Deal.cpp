@@ -91,10 +91,10 @@ void Deal::scoreIfWon(int nbrOfOddTricks) {
 
     switch(_contract->getTricksAmount()){
         case 6:
-            slamBonus = 100;
+            slamBonus = 500;
             break;
         case 7:
-            slamBonus = 200;
+            slamBonus = 1000;
             break;
         default :
             slamBonus = 0;
@@ -114,6 +114,7 @@ void Deal::scoreIfWon(int nbrOfOddTricks) {
             contractPoints = 10 + 30*nbrOfOddTricks;
             break;
     }
+
     return contractPoints + slamBonus;
 }
 
