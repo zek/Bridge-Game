@@ -13,10 +13,10 @@ Card *ComputerPlayer::playCard(Color::Type color, Color::Type trump_color) {
         Card *random = *random_it;
         _hand.erase(random_it);
         return random;
-    }else{
+    } else {
         vector<Card *>::iterator random_it = select_randomly(available_cards.begin(), available_cards.end());
         Card *random = *random_it;
-        _hand.erase(std::find_if(_hand.begin(), _hand.end(), [random](Card * p) -> bool { return random == p; }));
+        _hand.erase(std::find_if(_hand.begin(), _hand.end(), [random](Card *p) -> bool { return random == p; }));
         return random;
     }
 }
@@ -24,8 +24,10 @@ Card *ComputerPlayer::playCard(Color::Type color, Color::Type trump_color) {
 Contract *ComputerPlayer::proposeContract(Contract *current_max) {
     if (current_max == nullptr) {
         Contract *contract = new Contract(1, Color::NOTRUMP);
+        cout << *this << " proposed: " << *contract << endl;
         return contract;
     } else {
+        cout << *this << " passed" << endl;
         return Contract::Pass();
     }
 }

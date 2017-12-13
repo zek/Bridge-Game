@@ -51,3 +51,7 @@ Contract::Contract() {
 Contract *Contract::Pass() {
     return _pass;
 }
+
+std::ostream &operator<<(std::ostream &os, const Contract &c) {
+    return os << c._tricksAmount << " " << Color::Values[c._color];
+}

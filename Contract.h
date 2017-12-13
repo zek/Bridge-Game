@@ -2,6 +2,7 @@
 #define CONTRACT_H_INCLUDED
 
 #include "Color.h"
+#include <iostream>
 
 class Contract {
 private:
@@ -22,6 +23,8 @@ public:
     //ContractOption getContractOption();
 
     Color::Type getColor() const;
+
+    friend std::ostream &operator<<(std::ostream &os, const Contract &c);
 };
 
 #endif // CONTRACT_H_INCLUDED
