@@ -1,4 +1,5 @@
 #include "HumanPlayer.h"
+#include <algorithm>
 
 
 Contract *HumanPlayer::proposeContract(Contract *current_max) {

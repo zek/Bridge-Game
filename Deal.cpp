@@ -1,4 +1,5 @@
 #include "Deal.h"
+#include <algorithm>
 
 Deal::Deal(array<Card *, 52> deck, array<Player *, 4> players, int dealer) :
         _deck(deck),
