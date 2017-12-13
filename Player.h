@@ -27,13 +27,20 @@ public:
 
     virtual Contract *proposeContract(Contract *current_max) = 0;
 
-    virtual Card *playCard(Color::Type color, Color::Type trump_color) = 0;
+
+    void discardCard(Card *pCard);
+
+    Card *playCard(Color::Type color, Color::Type trump_color);
+
+    virtual Card *makeDecision(Color::Type color, Color::Type trump_color, std::vector<Card *> available_cards) = 0;
 
     Player(const string name);
 
     void setTeam(Team *team);
 
     Team *getTeam();
+
+    std::vector<Card *> getAvailableCards(Color::Type color);
 
     friend std::ostream &operator<<(std::ostream &os, const Player &c);
 };
