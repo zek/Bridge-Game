@@ -5,6 +5,7 @@
 #include "Player.h"
 
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
