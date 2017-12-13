@@ -3,6 +3,11 @@
 #include "ComputerPlayer.h"
 #include "Game.h"
 
+#include <wx/wxprec.h>
+#ifndef WX_PRECOMP
+#include <wx/wx.h>
+#endif
+
 int main() {
 
     Player* p1 = new ComputerPlayer("Computer 1");
