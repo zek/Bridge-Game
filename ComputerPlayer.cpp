@@ -1,6 +1,5 @@
 #include "ComputerPlayer.h"
 #include "misc.h"
-#include <algorithm>
 
 Card *ComputerPlayer::playCard(Color::Type color, Color::Type trump_color) {
     std::vector<Card *> available_cards;
