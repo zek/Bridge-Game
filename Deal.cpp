@@ -72,8 +72,8 @@ void Deal::scoring() {
     Defending = _players[(_contractor + 1) % 4]->getTeam();
 
     // nbr of tricks made after the first 6
-    int nbrOfOddTricks = (Contracting->getWonTricks().size())-6;
-    if (nbrOfOddTricks < _contract->getTricksAmount()){
+    int nbrOfOddTricks = (Contracting->getWonTricks().size()) - 6;
+    if (nbrOfOddTricks < _contract->getTricksAmount()) {
         //if contract is failed
         Defending->addToGameScore(scoreIfLost(nbrOfOddTricks));
     } else {
@@ -85,11 +85,11 @@ void Deal::scoring() {
     Defending->newDeal();
 }
 
-void Deal::scoreIfWon(int nbrOfOddTricks) {
+int Deal::scoreIfWon(int nbrOfOddTricks) {
     int slamBonus;
     int contractPoints;
 
-    switch(_contract->getTricksAmount()){
+    switch (_contract->getTricksAmount()) {
         case 6:
             slamBonus = 500;
             break;
@@ -101,26 +101,26 @@ void Deal::scoreIfWon(int nbrOfOddTricks) {
             break;
     }
 
-    switch(_contract->getColor()){
+    switch (_contract->getColor()) {
         case Color::CLUB:
         case Color::DIAMOND:
-            contractPoints = 20*nbrOfOddTricks;
+            contractPoints = 20 * nbrOfOddTricks;
             break;
         case Color::HEART:
         case Color::SPADE:
-            contractPoints = 30*nbrOfOddTricks;
+            contractPoints = 30 * nbrOfOddTricks;
             break;
         case Color::NOTRUMP:
-            contractPoints = 10 + 30*nbrOfOddTricks;
+            contractPoints = 10 + 30 * nbrOfOddTricks;
             break;
     }
 
     return contractPoints + slamBonus;
 }
 
-void Deal::scoreIfLost(int nbrOfOddTricks) {
+int Deal::scoreIfLost(int nbrOfOddTricks) {
     int requiredTricks = _contract->getTricksAmount();
-    return 50*(requiredTricks - nbrOfOddTricks);
+    return 50 * (requiredTricks - nbrOfOddTricks);
 }
 
 void Deal::play() {
