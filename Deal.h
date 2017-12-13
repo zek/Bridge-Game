@@ -25,6 +25,10 @@ private:
 
     void scoring();
 
+    int scoreIfWon(int nbrOfOddTricks);
+
+    int scoreIfLost(int nbrOfOddTricks);
+
 public:
     Deal(array<Card *, 52> deck, array<Player *, 4> players, int dealer);
 
