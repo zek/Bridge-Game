@@ -9,10 +9,9 @@ public:
     ComputerPlayer(const string name);
 
 private:
-    Card *playCard(Color::Type color, Color::Type trump_color);
+    Card *makeDecision(Color::Type color, Color::Type trump_color, std::vector<Card *> available_cards);
 
     Contract *proposeContract(Contract *current_max);
-
 };
 
 

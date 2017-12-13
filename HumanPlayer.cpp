@@ -15,15 +15,14 @@ Contract *HumanPlayer::proposeContract(Contract *current_max) {
     return new Contract(trick_amount, Color::All[color]);
 }
 
-Card *HumanPlayer::playCard(Color::Type color, Color::Type trump_color) {
+Card *HumanPlayer::makeDecision(Color::Type color, Color::Type trump_color, std::vector<Card *> available_cards) {
     cout << "Your Hand: " << endl;
     int i = 0, card_no;
-    for (Card *c: _hand) {
+    for (Card *c: available_cards) {
         cout << i++ << ":" << *c << endl;
     }
     cout << "Play: ";
     cin >> card_no;
-    Card* card = _hand[card_no];
-    _hand.erase(std::find_if(_hand.begin(), _hand.end(), [card](Card *p) -> bool { return card == p; }));
+    Card *card = available_cards[card_no];
     return card;
 }
