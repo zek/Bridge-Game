@@ -3,6 +3,7 @@
 
 
 #include "Player.h"
+#include <algorithm>
 
 class ComputerPlayer : public Player {
 public:
