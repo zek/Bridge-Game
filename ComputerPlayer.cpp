@@ -5,7 +5,8 @@ Card *ComputerPlayer::playCard(Color::Type color, Color::Type trump_color) {
     std::vector<Card *> available_cards;
     copy_if(_hand.begin(), _hand.end(), std::back_inserter(available_cards),
             [color, trump_color](const Card *card) {
-                return (card->getColor() == color) || (card->getColor() == trump_color);
+                return (card->getColor() == color));
+                //return (card->getColor() == color) || (card->getColor() == trump_color);
             });
 
     if (available_cards.size() == 0) {
@@ -23,7 +24,7 @@ Card *ComputerPlayer::playCard(Color::Type color, Color::Type trump_color) {
 
 Contract *ComputerPlayer::proposeContract(Contract *current_max) {
     if (current_max == nullptr) {
-        Contract *contract = new Contract(1, Color::NOTRUMP);
+        Contract *contract = new Contract(1, Color::CLUB);
         cout << *this << " proposed: " << *contract << endl;
         return contract;
     } else {

@@ -53,8 +53,7 @@ void Deal::playing() {
         for (int i = 0; i < 4; i++) {
             current_player = (first_player + i) % 4;
             card_played = _players[current_player]->playCard(current_trick->getStartingColor(),
-                                                             Color::NOTRUMP);//todo: need trump color
-
+                                                             _contract->getColor());
             cout << *_players[current_player] << ": " << *card_played << endl;
             current_trick->addCard(card_played, current_player);
         }
