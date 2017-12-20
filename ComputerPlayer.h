@@ -13,11 +13,14 @@ public:
 	Contract *proposeContract(Contract *current_max);
 
 	bool hasGreater(Contract *contract, vector<Card *> available_cards);
+	bool hasContractColor(Contract *contract, vector<Card *> available_cards);
+
+
 
 	Card* theLowestAvailable(Contract *contract, vector<Card *> available_cards);
 	Card* greatestOnTable(Contract *contract);
 	Card* theGreatestAvailable(Contract *contract, vector<Card *> available_cards);
-	
+	vector<Card*> contractColor(Contract *contract, vector<Card *> available_cards);
 
 private:
 	static int n;
