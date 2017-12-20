@@ -20,6 +20,8 @@ bool Card::isBigger(Card *rhs, Contract *c) {
     return getColor() == c->getColor() && rhs->getColor() != c->getColor();
 }
 
+
+
 std::ostream &operator<<(std::ostream &os, const Card &c) {
     return os << Color::Values[c.getColor()] << " " << CardValue::Values[c.getValue()];
 }

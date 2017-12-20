@@ -2,6 +2,7 @@
 #define TRICK_H_INCLUDED
 
 #include "Card.h"
+#include <vector>
 #include "Color.h"
 #include "Contract.h"
 #include <utility>
@@ -15,6 +16,8 @@ private:
 
 public:
     void addCard(Card *c, int p);
+
+	vector<Card*> Trick::get_cards();
 
     int getWinner(Contract *c);
 
