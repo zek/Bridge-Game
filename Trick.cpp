@@ -22,3 +22,25 @@ int Trick::getWinner(Contract *c) {
     }
     return biggest.second;
 }
+
+
+vector<Card*> Trick::get_cards() {
+	
+	vector<Card*> cardsOnTable;
+
+
+	if (_cards.empty()) {
+		return cardsOnTable;
+	}
+	else {
+		std::list<pair<Card *, int>>::iterator it = _cards.begin();
+
+
+		for (++it; it != _cards.end(); ++it) {
+			cardsOnTable.push_back(it->first);
+		}
+
+
+		return cardsOnTable;
+	}
+}
