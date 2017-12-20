@@ -21,6 +21,7 @@ public:
 
     bool isBigger(Card *rhs, Contract *c);
 
+
     friend std::ostream &operator<<(std::ostream &os, const Card &c);
 };
 
