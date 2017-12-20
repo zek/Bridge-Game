@@ -16,10 +16,16 @@ Card *ComputerPlayer::makeDecision(Color::Type color, Contract *contract, std::v
 			if (hasGreater(contract, available_cards) == true)
 				return theGreatestAvailable(contract, available_cards);
 			else
-				return theLowestAvailable(contract, available_cards);
+				if (hasContractColor(contract, available_cards))
+					return theLowestAvailable(contract, contractColor(contract, available_cards));
+				else
+					return theLowestAvailable(contract, available_cards);
 		}
 		else
-			return random;
+			if (hasContractColor(contract, available_cards))
+				return theLowestAvailable(contract, contractColor(contract, available_cards));
+			else
+				return theLowestAvailable(contract, available_cards);
 	}
 	else
 	
@@ -27,7 +33,41 @@ Card *ComputerPlayer::makeDecision(Color::Type color, Contract *contract, std::v
 
 }
 
+bool ComputerPlayer::hasContractColor(Contract *contract, vector<Card *> available_cards) {
+	bool hasContractCol = false;
+	vector<Card *>::iterator iter = available_cards.begin();
+	Card* card = *iter;
 
+	//does the Player have the contract color? 
+	for (++iter; iter != available_cards.end(); ++iter) {
+		if (card->getColor() == contract->getColor()) {
+			hasContractCol = true;
+			break;
+		}
+
+		card = *iter;
+	}
+
+	return hasContractCol;
+}
+
+
+vector<Card*> ComputerPlayer::contractColor(Contract *contract, vector<Card *> available_cards) {
+	vector<Card *>::iterator iter = available_cards.begin();
+	vector<Card*> contractColor;
+	Card* card = *iter;
+
+	//create vector of only available contract colors
+	for (++iter; iter != available_cards.end(); ++iter) {
+		if (card->getColor() == contract->getColor()) {
+			contractColor.push_back(card);
+		}
+
+		card = *iter;
+	}
+
+	return contractColor;
+}
 
 
 bool ComputerPlayer::hasGreater(Contract *contract, vector<Card *> available_cards) {

@@ -17,7 +17,7 @@ private:
 public:
     void addCard(Card *c, int p);
 
-	vector<Card*> Trick::get_cards();
+	vector<Card*> get_cards();
 
     int getWinner(Contract *c);
 
