@@ -1,5 +1,9 @@
 #include "Player.h"
 
+void Player::setGame(Game* game) {
+	_game = game;
+}
+
 void Player::giveCard(Card *card) {
     _hand.push_back(card);
 }
@@ -55,9 +59,9 @@ void Player::discardCard(Card *card) {
     _hand.erase(std::find_if(_hand.begin(), _hand.end(), [card](Card *p) -> bool { return card == p; }));
 }
 
-Card *Player::playCard(Color::Type color, Contract *contract, Trick* trick) {
-    std::vector<Card *> available_cards = getAvailableCards(color);
-    Card *card = makeDecision(color, contract, available_cards, trick);
+Card *Player::playCard() {
+    std::vector<Card *> available_cards = getAvailableCards(_game->getCurrentDeal()->getCurrentTrick()->getStartingColor() );
+    Card *card = makeDecision(available_cards);
     discardCard(card);
     return card;
 }

@@ -7,12 +7,15 @@
 #include <iostream>
 #include <algorithm>
 
+class Player;
+
 using namespace std;
 
 class Deal {
 private:
     Contract *_contract;
-    array<Player *, 4> _players;
+	Trick *_currentTrick;
+	array<Player *, 4> _players;
     int _dealer;
     int _contractor;
     array<Card *, 52> _deck;
@@ -30,6 +33,11 @@ private:
     int scoreIfLost(int nbrOfOddTricks);
 
 public:
+
+	Trick* getCurrentTrick();
+
+	Contract* getContract();
+
     Deal(array<Card *, 52> deck, array<Player *, 4> players, int dealer);
 
     void play();

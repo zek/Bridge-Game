@@ -24,7 +24,7 @@ int Trick::getWinner(Contract *c) {
 }
 
 
-vector<Card*> Trick::get_cards() {
+vector<Card*> Trick::getCards() {
 	
 	vector<Card*> cardsOnTable;
 

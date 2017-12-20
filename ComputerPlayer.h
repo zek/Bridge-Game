@@ -9,24 +9,24 @@ public:
     ComputerPlayer(const string name);
 
 
-	Card *makeDecision(Color::Type color, Contract *contract, std::vector<Card *> available_cards, Trick* trick);
-	Contract *proposeContract(Contract *current_max);
-
-	bool hasGreater(Contract *contract, vector<Card *> available_cards);
-	bool hasContractColor(Contract *contract, vector<Card *> available_cards);
-
-
-
-	Card* theLowestAvailable(Contract *contract, vector<Card *> available_cards);
-	Card* greatestOnTable(Contract *contract);
-	Card* theGreatestAvailable(Contract *contract, vector<Card *> available_cards);
-	vector<Card*> contractColor(Contract *contract, vector<Card *> available_cards);
 
 private:
 	static int n;
    
+	Card *makeDecision(std::vector<Card *> available_cards);
+	Contract *proposeContract(Contract *current_max);
+
+	bool hasGreater();
+	bool hasContractColor();
 
 
+
+	Card* theLowestAvailable(vector<Card*> available_cards);
+	Card* greatestOnTable();
+	Card* theGreatestAvailable();
+	vector<Card*> contractColor();
+
+	vector<Card *> available_cards;
 	vector<Card*> cardsOnTable;
 
    

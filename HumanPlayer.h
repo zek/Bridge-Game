@@ -9,7 +9,7 @@ public:
     HumanPlayer(const string name) : Player(name) {}
 
 private:
-    Card *makeDecision(Color::Type color, Color::Type trump_color, std::vector<Card *> available_cards);
+    Card *makeDecision(std::vector<Card *> available_cards);
 
     Contract *proposeContract(Contract *current_max);
 };

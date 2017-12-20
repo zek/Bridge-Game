@@ -1,50 +1,47 @@
 #include "ComputerPlayer.h"
 #include "misc.h"
 
-Card *ComputerPlayer::makeDecision(Color::Type color, Contract *contract, std::vector<Card *> available_cards, Trick* trick) {
+Card *ComputerPlayer::makeDecision(std::vector<Card *> available_cards) {
    
+	this->available_cards = available_cards;
+	cardsOnTable = _game->getCurrentDeal()->getCurrentTrick()->getCards();
+
 	vector<Card *>::iterator random_it = select_randomly(available_cards.begin(), available_cards.end());
 	Card* random = *random_it;
 
 
-	cardsOnTable = trick->get_cards();
-
 	
 	if (cardsOnTable.empty() == false) {
-
-		if (hasColor(color)) {
-			if (hasGreater(contract, available_cards) == true)
-				return theGreatestAvailable(contract, available_cards);
+		if (hasColor(_game->getCurrentDeal()->getCurrentTrick()->getStartingColor())) {
+			if (hasGreater() == true)
+				return theGreatestAvailable();
 			else
-				if (hasContractColor(contract, available_cards))
-					return theLowestAvailable(contract, contractColor(contract, available_cards));
+				if (hasContractColor())
+					return theLowestAvailable(contractColor());
 				else
-					return theLowestAvailable(contract, available_cards);
+					return theLowestAvailable(available_cards);
 		}
 		else
-			if (hasContractColor(contract, available_cards))
-				return theLowestAvailable(contract, contractColor(contract, available_cards));
+			if (hasContractColor())
+				return theLowestAvailable(contractColor());
 			else
-				return theLowestAvailable(contract, available_cards);
+				return theLowestAvailable(available_cards);
 	}
-	else
-	
+	else	
 		return random;
-
 }
 
-bool ComputerPlayer::hasContractColor(Contract *contract, vector<Card *> available_cards) {
+bool ComputerPlayer::hasContractColor() {
 	bool hasContractCol = false;
 	vector<Card *>::iterator iter = available_cards.begin();
 	Card* card = *iter;
 
 	//does the Player have the contract color? 
 	for (++iter; iter != available_cards.end(); ++iter) {
-		if (card->getColor() == contract->getColor()) {
+		if (card->getColor() == _game->getCurrentDeal()->getContract()->getColor()) {
 			hasContractCol = true;
 			break;
 		}
-
 		card = *iter;
 	}
 
@@ -52,17 +49,16 @@ bool ComputerPlayer::hasContractColor(Contract *contract, vector<Card *> availab
 }
 
 
-vector<Card*> ComputerPlayer::contractColor(Contract *contract, vector<Card *> available_cards) {
+vector<Card*> ComputerPlayer::contractColor() {
 	vector<Card *>::iterator iter = available_cards.begin();
 	vector<Card*> contractColor;
 	Card* card = *iter;
 
 	//create vector of only available contract colors
 	for (++iter; iter != available_cards.end(); ++iter) {
-		if (card->getColor() == contract->getColor()) {
+		if (card->getColor() == _game->getCurrentDeal()->getContract()->getColor()) {
 			contractColor.push_back(card);
 		}
-
 		card = *iter;
 	}
 
@@ -70,15 +66,15 @@ vector<Card*> ComputerPlayer::contractColor(Contract *contract, vector<Card *> a
 }
 
 
-bool ComputerPlayer::hasGreater(Contract *contract, vector<Card *> available_cards) {
+bool ComputerPlayer::hasGreater() {
 
 	bool isGreater = false;
 
 
-	Card* greatestAvail = theGreatestAvailable(contract, available_cards);
-	Card* greatestTable = greatestOnTable(contract);
+	Card* greatestAvail = theGreatestAvailable();
+	Card* greatestTable = greatestOnTable();
 
-	if (greatestAvail->isBigger(greatestTable, contract))
+	if (greatestAvail->isBigger(greatestTable, _game->getCurrentDeal()->getContract() ))
 		isGreater = true;
 	else
 		isGreater = false;
@@ -86,7 +82,7 @@ bool ComputerPlayer::hasGreater(Contract *contract, vector<Card *> available_car
 	return isGreater;
 }
 
-Card* ComputerPlayer::greatestOnTable(Contract *contract) {
+Card* ComputerPlayer::greatestOnTable() {
 	vector<Card *>::iterator iter = cardsOnTable.begin();
 	Card* greatest = *iter;
 
@@ -94,7 +90,7 @@ Card* ComputerPlayer::greatestOnTable(Contract *contract) {
 	Card* tmp = *iter;
 	for (++iter; iter != cardsOnTable.end(); ++iter) {
 		tmp = *iter;
-		if (tmp->isBigger(greatest, contract))
+		if (tmp->isBigger(greatest, _game->getCurrentDeal()->getContract() ))
 			greatest = tmp;
 
 		//std::cout << ' ' << greatest->getValue() << '\n';
@@ -104,7 +100,7 @@ Card* ComputerPlayer::greatestOnTable(Contract *contract) {
 }
 
 
-Card* ComputerPlayer::theGreatestAvailable(Contract *contract, vector<Card *> available_cards) {
+Card* ComputerPlayer::theGreatestAvailable() {
 	vector<Card *>::iterator it = available_cards.begin();
 	Card* greatest = *it;
 
@@ -112,7 +108,7 @@ Card* ComputerPlayer::theGreatestAvailable(Contract *contract, vector<Card *> av
 	Card* tmp = *it;
 	for (++it; it != available_cards.end(); ++it) {
 		tmp = *it;
-		if (tmp->isBigger(greatest, contract))
+		if (tmp->isBigger(greatest, _game->getCurrentDeal()->getContract() ))
 			greatest = tmp;
 		//std::cout << ' ' << greatest->getValue() << '\n';
 	}
@@ -120,7 +116,7 @@ Card* ComputerPlayer::theGreatestAvailable(Contract *contract, vector<Card *> av
 	return greatest;
 }
 
-Card* ComputerPlayer::theLowestAvailable(Contract *contract, vector<Card *> available_cards) {
+Card* ComputerPlayer::theLowestAvailable(vector<Card *> available_cards) {
 	vector<Card *>::iterator it = available_cards.begin();
 	Card* lowest = *it;
 
@@ -128,7 +124,7 @@ Card* ComputerPlayer::theLowestAvailable(Contract *contract, vector<Card *> avai
 	Card* tmp = *it;
 	for (++it; it != available_cards.end(); ++it) {
 		tmp = *it;
-		if (lowest->isBigger(tmp, contract))
+		if (lowest->isBigger(tmp, _game->getCurrentDeal()->getContract() ))
 			lowest = tmp;
 	}
 

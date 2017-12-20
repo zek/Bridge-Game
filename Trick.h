@@ -17,12 +17,11 @@ private:
 public:
     void addCard(Card *c, int p);
 
-	vector<Card*> get_cards();
+	vector<Card*> getCards();
 
     int getWinner(Contract *c);
 
     Color::Type getStartingColor();
-
 };
 
 #endif // TRICK_H_INCLUDED

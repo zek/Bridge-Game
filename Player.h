@@ -10,7 +10,9 @@
 #include "Team.h"
 #include "Trick.h"
 #include "Contract.h"
+#include "Game.h"
 
+class Game;
 class Team;
 
 using namespace std;
@@ -21,7 +23,12 @@ protected:
     Team *_team;
     bool _isDummy;
     string _name;
+	Game* _game;
+
+
 public:
+	void setGame(Game* game);
+
     void giveCard(Card *card);
 
     void discardHand();
@@ -33,13 +40,13 @@ public:
 
     void discardCard(Card *pCard);
 
-    Card *playCard(Color::Type color, Contract *contract, Trick* trick);
+    //Card *playCard(Color::Type color, Contract *contract, Trick* trick);
 
-    virtual Card *makeDecision(Color::Type color, Contract *contract, std::vector<Card *> available_cards, Trick *trick) = 0;
+	Card *playCard();
+
+    virtual Card *makeDecision(std::vector<Card *> available_cards) = 0;
 
     Player(const string name);
-
-	Player() {};
 
     void setTeam(Team *team);
 
