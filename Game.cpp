@@ -2,11 +2,18 @@
 
 array<Card *, 52> Game::_deck = {};
 
+Deal* Game::getCurrentDeal() {
+	return _currentDeal;
+}
+
 Game::Game(array<Player *, 4> players) {
     _players = players;
     setTeams();
     setDeck(); // Todo: It should be setted once.
 
+	for (Player *player : _players) {
+		player->setGame(this);
+	}
 }
 
 void Game::setDeck() {
@@ -29,8 +36,8 @@ void Game::play() {
     int dealer = 0;
     bool isFinished = false;
     while (!isFinished) {
-        Deal deal = Deal(getDeck(), _players, dealer);
-        deal.play();
+        _currentDeal = new Deal(getDeck(), _players, dealer);
+		_currentDeal->play();
         isFinished = true;
     }
 }

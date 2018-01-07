@@ -15,7 +15,7 @@ Contract *HumanPlayer::proposeContract(Contract *current_max) {
     return new Contract(trick_amount, Color::All[color]);
 }
 
-Card *HumanPlayer::makeDecision(Color::Type color, Color::Type trump_color, std::vector<Card *> available_cards) {
+Card *HumanPlayer::makeDecision(std::vector<Card *> available_cards) {
     cout << "Your Hand: " << endl;
     int i = 0, card_no;
     for (Card *c: available_cards) {

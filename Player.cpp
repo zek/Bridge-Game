@@ -1,5 +1,9 @@
 #include "Player.h"
 
+void Player::setGame(Game* game) {
+	_game = game;
+}
+
 void Player::giveCard(Card *card) {
     _hand.push_back(card);
 }
@@ -38,13 +42,26 @@ std::vector<Card *> Player::getAvailableCards(Color::Type color) {
     return available_cards;
 }
 
+bool Player::hasColor(Color::Type color) {
+	std::vector<Card *> available_cards;
+	copy_if(_hand.begin(), _hand.end(), std::back_inserter(available_cards),
+		[color](const Card *card) {
+		return card->getColor() == color;
+	});
+
+	if (available_cards.size() == 0)
+		return false;
+	else
+		return true;
+}
+
 void Player::discardCard(Card *card) {
     _hand.erase(std::find_if(_hand.begin(), _hand.end(), [card](Card *p) -> bool { return card == p; }));
 }
 
-Card *Player::playCard(Color::Type color, Color::Type trump_color) {
-    std::vector<Card *> available_cards = getAvailableCards(color);
-    Card *card = makeDecision(color, trump_color, available_cards);
+Card *Player::playCard() {
+    std::vector<Card *> available_cards = getAvailableCards(_game->getCurrentDeal()->getCurrentTrick()->getStartingColor() );
+    Card *card = makeDecision(available_cards);
     discardCard(card);
     return card;
 }

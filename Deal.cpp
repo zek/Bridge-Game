@@ -5,6 +5,15 @@ Deal::Deal(array<Card *, 52> deck, array<Player *, 4> players, int dealer) :
         _players(players),
         _dealer(dealer) {};
 
+
+Trick* Deal::getCurrentTrick() {
+	return _currentTrick;
+}
+
+Contract* Deal::getContract() {
+	return _contract;
+}
+
 void Deal::dealing() {
     //shuffling
     random_shuffle(begin(_deck), end(_deck));
@@ -41,7 +50,7 @@ void Deal::bidding() {
 
 void Deal::playing() {
     int first_player = (_contractor + 1) % 4;
-    Trick *current_trick;
+    
     Card *card_played;
     int current_player;
 
@@ -49,18 +58,20 @@ void Deal::playing() {
     for (int round = 0; round < 13; round++) {
         //the four players have to play a trick
         cout << "Round: " << round << endl;
-        current_trick = new Trick();
+		_currentTrick = new Trick();
         for (int i = 0; i < 4; i++) {
             current_player = (first_player + i) % 4;
-            card_played = _players[current_player]->playCard(current_trick->getStartingColor(),
-                                                             _contract->getColor());
+            //card_played = _players[current_player]->playCard(current_trick->getStartingColor(),
+            //                                                 _contract, current_trick);
+			card_played = _players[current_player]->playCard();
+
             cout << *_players[current_player] << ": " << *card_played << endl;
-            current_trick->addCard(card_played, current_player);
+			_currentTrick->addCard(card_played, current_player);
         }
 
-        first_player = current_trick->getWinner(_contract);
+        first_player = _currentTrick->getWinner(_contract);
         cout << "Winner: " << *_players[first_player] << endl << endl;
-        _players[first_player]->getTeam()->winTrick(current_trick);
+        _players[first_player]->getTeam()->winTrick(_currentTrick);
     }
 
 }
