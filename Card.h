@@ -20,8 +20,7 @@ public:
     Color::Type getColor() const;
 
     bool isBigger(Card *rhs, Contract *c);
-
-
+    
     friend std::ostream &operator<<(std::ostream &os, const Card &c);
 };
 

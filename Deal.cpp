@@ -6,12 +6,12 @@ Deal::Deal(array<Card *, 52> deck, array<Player *, 4> players, int dealer) :
         _dealer(dealer) {};
 
 
-Trick* Deal::getCurrentTrick() {
-	return _currentTrick;
+Trick *Deal::getCurrentTrick() {
+    return _currentTrick;
 }
 
-Contract* Deal::getContract() {
-	return _contract;
+Contract *Deal::getContract() {
+    return _contract;
 }
 
 void Deal::dealing() {
@@ -50,7 +50,7 @@ void Deal::bidding() {
 
 void Deal::playing() {
     int first_player = (_contractor + 1) % 4;
-    
+
     Card *card_played;
     int current_player;
 
@@ -58,15 +58,15 @@ void Deal::playing() {
     for (int round = 0; round < 13; round++) {
         //the four players have to play a trick
         cout << "Round: " << round << endl;
-		_currentTrick = new Trick();
+        _currentTrick = new Trick();
         for (int i = 0; i < 4; i++) {
             current_player = (first_player + i) % 4;
             //card_played = _players[current_player]->playCard(current_trick->getStartingColor(),
             //                                                 _contract, current_trick);
-			card_played = _players[current_player]->playCard();
+            card_played = _players[current_player]->playCard();
 
             cout << *_players[current_player] << ": " << *card_played << endl;
-			_currentTrick->addCard(card_played, current_player);
+            _currentTrick->addCard(card_played, current_player);
         }
 
         first_player = _currentTrick->getWinner(_contract);
@@ -83,7 +83,7 @@ void Deal::scoring() {
     Defending = _players[(_contractor + 1) % 4]->getTeam();
 
     // nbr of tricks made after the first 6
-    int nbrOfOddTricks = (Contracting->getWonTricks().size()) - 6;
+    int nbrOfOddTricks = static_cast<int>(Contracting->getWonTricks().size()) - 6;
     if (nbrOfOddTricks < _contract->getTricksAmount()) {
         //if contract is failed
         Defending->addToGameScore(scoreIfLost(nbrOfOddTricks));
@@ -98,7 +98,7 @@ void Deal::scoring() {
 
 int Deal::scoreIfWon(int nbrOfOddTricks) {
     int slamBonus;
-    int contractPoints;
+    int contractPoints = 0;
 
     switch (_contract->getTricksAmount()) {
         case 6:
