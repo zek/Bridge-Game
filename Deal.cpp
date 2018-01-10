@@ -57,8 +57,9 @@ void Deal::playing() {
     //we play 13 tricks
     for (int round = 0; round < 13; round++) {
         //the four players have to play a trick
-        cout << "Round: " << round << endl;
         _currentTrick = new Trick();
+        std::cout << "\x1B[2J\x1B[H";
+        cout << "Round: " << round + 1 << endl;
         for (int i = 0; i < 4; i++) {
             current_player = (first_player + i) % 4;
             //card_played = _players[current_player]->playCard(current_trick->getStartingColor(),

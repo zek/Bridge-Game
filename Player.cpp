@@ -1,7 +1,7 @@
 #include "Player.h"
 
-void Player::setGame(Game* game) {
-	_game = game;
+void Player::setGame(Game *game) {
+    _game = game;
 }
 
 void Player::giveCard(Card *card) {
@@ -13,6 +13,11 @@ void Player::discardHand() {
 }
 
 void Player::displayHand() {
+    cout << endl << "Your Hand: ";
+    for (Card *c: _hand) {
+        cout << *c << "  ";
+    }
+    cout << endl << endl;
 
 }
 
@@ -38,21 +43,18 @@ std::vector<Card *> Player::getAvailableCards(Color::Type color) {
             [color](const Card *card) {
                 return card->getColor() == color;
             });
-    if (available_cards.size() == 0) return _hand;
+    if (available_cards.empty()) return _hand;
     return available_cards;
 }
 
 bool Player::hasColor(Color::Type color) {
-	std::vector<Card *> available_cards;
-	copy_if(_hand.begin(), _hand.end(), std::back_inserter(available_cards),
-		[color](const Card *card) {
-		return card->getColor() == color;
-	});
+    std::vector<Card *> available_cards;
+    copy_if(_hand.begin(), _hand.end(), std::back_inserter(available_cards),
+            [color](const Card *card) {
+                return card->getColor() == color;
+            });
 
-	if (available_cards.size() == 0)
-		return false;
-	else
-		return true;
+    return !available_cards.empty();
 }
 
 void Player::discardCard(Card *card) {
@@ -60,7 +62,8 @@ void Player::discardCard(Card *card) {
 }
 
 Card *Player::playCard() {
-    std::vector<Card *> available_cards = getAvailableCards(_game->getCurrentDeal()->getCurrentTrick()->getStartingColor() );
+    std::vector<Card *> available_cards = getAvailableCards(
+            _game->getCurrentDeal()->getCurrentTrick()->getStartingColor());
     Card *card = makeDecision(available_cards);
     discardCard(card);
     return card;
