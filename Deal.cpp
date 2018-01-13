@@ -79,7 +79,7 @@ void Deal::playing() {
         cout << "Winner: " << *_players[_first_player] << endl << endl;
         _players[_first_player]->getTeam()->winTrick(_currentTrick);
 
-        _round++
+        _round++;
         makeMemento();
     }
 
