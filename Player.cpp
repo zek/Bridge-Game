@@ -57,14 +57,27 @@ bool Player::hasColor(Color::Type color) {
     return !available_cards.empty();
 }
 
-void Player::discardCard(Card *card) {
-    _hand.erase(std::find_if(_hand.begin(), _hand.end(), [card](Card *p) -> bool { return card == p; }));
-}
-
 Card *Player::playCard() {
     std::vector<Card *> available_cards = getAvailableCards(
             _game->getCurrentDeal()->getCurrentTrick()->getStartingColor());
     Card *card = makeDecision(available_cards);
-    discardCard(card);
+    _hand.erase(std::find_if(_hand.begin(), _hand.end(), [card](Card *p) -> bool { return card == p; }));
     return card;
+}
+
+void Player::unserialize(nlohmann::json data) {
+    auto deck = Game::getDeck();
+    _name = data["name"];
+    _hand.clear();
+    for (const auto &c: data["hand"]) {
+        _hand.push_back(deck[c]);
+    }
+}
+
+json Player::serializeHand() {
+    json hand;
+    for (auto c: _hand) {
+        hand += c->serialize();
+    }
+    return hand;
 }

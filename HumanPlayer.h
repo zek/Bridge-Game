@@ -8,10 +8,18 @@ class HumanPlayer : public Player {
 public:
     HumanPlayer(const string name) : Player(name) {}
 
-private:
-    Card *makeDecision(std::vector<Card *> available_cards);
+    nlohmann::json serialize() override {
+        json data;
+        data["name"] = _name;
+        data["hand"] = serializeHand();
+        data["isComputer"] = 0;
+        return data;
+    }
 
-    Contract *proposeContract(Contract *current_max);
+private:
+    Card *makeDecision(std::vector<Card *> available_cards) override;
+
+    Contract *proposeContract(Contract *current_max) override;
 };
 
 

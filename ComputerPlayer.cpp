@@ -26,20 +26,18 @@ Card *ComputerPlayer::makeDecision(std::vector<Card *> available_cards) {
 }
 
 bool ComputerPlayer::hasContractColor() {
-    bool hasContractCol = false;
     vector<Card *>::iterator iter = available_cards.begin();
     Card *card = *iter;
 
     //does the Player have the contract color?
     for (++iter; iter != available_cards.end(); ++iter) {
         if (card->getColor() == _game->getCurrentDeal()->getContract()->getColor()) {
-            hasContractCol = true;
-            break;
+            return true;
         }
         card = *iter;
     }
 
-    return hasContractCol;
+    return false;
 }
 
 

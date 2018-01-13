@@ -20,7 +20,7 @@ private:
     static array<Card *, 52> _deck;
 	Deal* _currentDeal;
 
-    void setDeck();
+    static void setDeck();
 
     void setTeams();
 

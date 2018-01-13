@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "ComputerPlayer.h"
 #include "HumanPlayer.h"
+#include "Memento.h"
 
 array<Card *, 52> Game::_deck = {};
 bool Game::_deckSet = false;
@@ -52,7 +53,6 @@ void Game::init() {
 }
 
 void Game::setDeck() {
-    if (_deckSet) return;
     int i = 0;
     for (const auto cardValue : CardValue::All) {
         for (const auto color : Color::All) {
@@ -70,10 +70,15 @@ void Game::setTeams() {
 }
 
 void Game::play() {
+    Memento *mem = Memento::loadFile();
     int dealer = 0;
     bool isFinished = false;
     while (!isFinished) {
         _currentDeal = new Deal(getDeck(), _players, dealer);
+        if (mem) {
+            _currentDeal->reset(mem);
+            mem = nullptr;
+        }
         _currentDeal->play();
 
         cout << _teams[0]->getName() << " : " << _teams[0]->getGameScore() << endl;
@@ -84,5 +89,8 @@ void Game::play() {
 }
 
 array<Card *, 52> Game::getDeck() {
+    if (!_deckSet) {
+        setDeck();
+    }
     return Game::_deck;
 }
