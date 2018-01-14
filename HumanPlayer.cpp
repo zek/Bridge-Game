@@ -2,7 +2,7 @@
 
 Contract *HumanPlayer::proposeContract(Contract *current_max) {
     int color = -1, trick_amount;
-    displayHand();
+    displayHand(7);
     if (current_max) {
         cout << "Current contract: " << *current_max << endl;
     }
@@ -48,11 +48,11 @@ Contract *HumanPlayer::proposeContract(Contract *current_max) {
 }
 
 Card *HumanPlayer::makeDecision(std::vector<Card *> available_cards) {
-    cout << "It's Player " << *this << "'s turn." << endl;
+    cout << AdvancedConsole::Cursor(2, 0) << AdvancedConsole::Erase(AdvancedConsole::AC_ALL, AdvancedConsole::AC_LINE)  << "It's Player " << *this << "'s turn." << endl;
 
-    displayHand();
+    displayHand(4);
 
-    cout << "Playable Cards: " << endl;
+    cout << AdvancedConsole::Erase(AdvancedConsole::AC_AFTER) << "Playable Cards: " << endl;
     int i = 0, card_no = -1;
     for (Card *c: available_cards) {
         cout << i++ << ":" << *c << endl;

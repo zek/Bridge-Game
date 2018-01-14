@@ -117,10 +117,8 @@ Card *ComputerPlayer::theLowestAvailable(vector<Card *> available_cards) {
 Contract *ComputerPlayer::proposeContract(Contract *current_max) {
     if (current_max == nullptr) {
         Contract *contract = new Contract(1, Color::CLUB);
-        cout << *this << " proposed: " << *contract << endl;
         return contract;
     } else {
-        cout << *this << " passed" << endl;
         return Contract::Pass();
     }
 }

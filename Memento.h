@@ -40,6 +40,7 @@ private:
     void saveFile();
 
     friend class Deal;
+    friend class Game;
 
 public:
     static Memento* loadFile(int index = -1);

@@ -38,11 +38,22 @@ void Deal::bidding() {
     int speaker = ((_contractor == -1 ? _dealer : _contractor) + 1) % 4;
     int nbrOfPass = 0;
     Contract *tmp_c;
+    cout << AdvancedConsole::Erase();
+    cout << AdvancedConsole::Cursor(0, 0) << "Proposes:";
     while ((nbrOfPass < 3) || (nbrOfPass == 3 && _contract == nullptr)) {
+        cout << AdvancedConsole::Cursor(6, 0)
+             << AdvancedConsole::Erase(AdvancedConsole::AC_ALL, AdvancedConsole::AC_LINE)
+             << "Player: " << *_players[speaker] << endl;
         tmp_c = _players[speaker]->proposeContract(_contract);
+
+
+        cout << AdvancedConsole::Cursor(speaker + 2, 0)
+             << AdvancedConsole::Erase(AdvancedConsole::AC_ALL, AdvancedConsole::AC_LINE);
         if (tmp_c == Contract::Pass()) {
+            cout << *_players[speaker] << " passed" << endl;
             nbrOfPass++;
         } else if (_contract == nullptr || tmp_c > _contract) {
+            cout << *_players[speaker] << " proposed " << *tmp_c << endl;
             nbrOfPass = 0;
             _contract = tmp_c;
             _contractor = speaker;

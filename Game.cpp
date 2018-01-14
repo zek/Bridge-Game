@@ -2,6 +2,7 @@
 #include "ComputerPlayer.h"
 #include "HumanPlayer.h"
 #include "Memento.h"
+#include "misc.h"
 
 array<Card *, 52> Game::_deck = {};
 bool Game::_deckSet = false;
@@ -16,7 +17,24 @@ Game::Game(array<Player *, 4> players) {
 }
 
 Game::Game() {
+    cout << AdvancedConsole::Cursor(0, 0) << AdvancedConsole::Erase();
     cout << "Welcome to the Bridge Game." << endl << endl;
+
+    Memento *mem = Memento::loadFile();
+    if (mem) {
+        cout << "Do you want to load last game?" << endl;
+        string q;
+        cout << "Yes(y) or No(n) : ";
+        getline(std::cin, q);
+        if (q == "y" || q == "Y" || q == "yes" || q == "YES") {
+            this->reset(mem);
+            init();
+            _currentDeal = new Deal(getDeck(), _players, 0);
+            _currentDeal->reset(mem);
+            return;
+        }
+        cout << endl;
+    }
 
     cout << "You should choose either player is a human or a computer. " << endl;
     cout << "If it is a computer, just press ENTER." << endl;
@@ -38,6 +56,7 @@ Game::Game() {
 }
 
 void Game::init() {
+    _currentDeal = nullptr;
     setTeams();
     setDeck();
 
@@ -46,6 +65,7 @@ void Game::init() {
         cout << *team;
     }
     cout << endl;
+
 
     for (Player *player : _players) {
         player->setGame(this);
@@ -70,21 +90,18 @@ void Game::setTeams() {
 }
 
 void Game::play() {
-    Memento *mem = Memento::loadFile();
     int dealer = 0;
     bool isFinished = false;
     while (!isFinished) {
-        _currentDeal = new Deal(getDeck(), _players, dealer);
-        if (mem) {
-            _currentDeal->reset(mem);
-            mem = nullptr;
-        }
+        if (!_currentDeal)
+            _currentDeal = new Deal(getDeck(), _players, dealer);
         _currentDeal->play();
 
         cout << _teams[0]->getName() << " : " << _teams[0]->getGameScore() << endl;
         cout << _teams[1]->getName() << " : " << _teams[1]->getGameScore() << endl;
 
         isFinished = true;
+        _currentDeal = nullptr;
     }
 }
 
@@ -93,4 +110,22 @@ array<Card *, 52> Game::getDeck() {
         setDeck();
     }
     return Game::_deck;
+}
+
+Memento *Game::makeMemento() {
+    auto m = new Memento;
+    m->setPlayers(_players);
+    m->saveFile();
+    return m;
+}
+
+void Game::reset(Memento *mem) {
+    for (int i = 0; i < 4; i++) {
+        if (mem->players[i]["isComputer"] == 1) {
+            _players[i] = new ComputerPlayer("");
+        } else {
+            _players[i] = new HumanPlayer("");
+        }
+        _players[i]->unserialize(mem->players[i]);
+    }
 }

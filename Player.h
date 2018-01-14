@@ -13,6 +13,7 @@
 #include "Game.h"
 #include "Serializable.h"
 #include "Memento.h"
+#include "misc.h"
 
 class Game;
 
@@ -36,7 +37,7 @@ public:
 
     void discardHand();
 
-    void displayHand();
+    void displayHand(int row = 0);
 
     virtual Contract *proposeContract(Contract *current_max) = 0;
 
@@ -49,6 +50,8 @@ public:
     void setTeam(Team *team);
 
     Team *getTeam();
+
+    string getName();
 
     std::vector<Card *> getAvailableCards(Color::Type color);
 

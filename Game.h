@@ -6,6 +6,7 @@
 #include "Team.h"
 #include "Card.h"
 #include "Deal.h"
+#include "Memento.h"
 
 class Deal;
 class Team;
@@ -35,6 +36,10 @@ public:
     void init();
 
     void play();
+
+	Memento *makeMemento();
+
+	void reset(Memento *mem);
 };
 
 

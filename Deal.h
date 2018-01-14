@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include "misc.h"
 
 class Player;
 

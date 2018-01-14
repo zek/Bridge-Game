@@ -7,6 +7,7 @@
 #include <fstream>
 #include <limits>
 #include <string>
+#include "advconsole/advconsole.h"
 
 using namespace std;
 

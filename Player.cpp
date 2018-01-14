@@ -12,8 +12,9 @@ void Player::discardHand() {
 
 }
 
-void Player::displayHand() {
-    cout << endl << "Your Hand: ";
+void Player::displayHand(int row) {
+    cout << AdvancedConsole::Cursor(row, 0) << AdvancedConsole::Erase(AdvancedConsole::AC_ALL, AdvancedConsole::AC_LINE)
+         << "Your Hand: ";
     for (Card *c: _hand) {
         cout << *c << "  ";
     }
@@ -67,7 +68,7 @@ Card *Player::playCard() {
 
 void Player::unserialize(nlohmann::json data) {
     auto deck = Game::getDeck();
-    _name = data["name"];
+    _name.assign(data["name"]);
     _hand.clear();
     for (const auto &c: data["hand"]) {
         _hand.push_back(deck[c]);
@@ -80,4 +81,8 @@ json Player::serializeHand() {
         hand += c->serialize();
     }
     return hand;
+}
+
+string Player::getName() {
+    return _name;
 }
