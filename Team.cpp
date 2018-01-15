@@ -45,4 +45,23 @@ string Team::getName() const {
     return _name;
 }
 
+json Team::serialize() {
+    json data;
+    data["name"] = _name;
+    data["game_score"] = _gameScore;
+    json tricks_won;
+    for (auto t : _tricksWon) {
+        tricks_won += t->serialize();
+    }
+    data["tricks_won"] = tricks_won;
+    return data;
+}
 
+void Team::unserialize(json data) {
+     _name = data["name"];
+    _gameScore = data["game_score"];
+    for (const auto &t : data["tricks_won"]) {
+        winTrick(Trick::unserialize(t));
+    }
+
+}

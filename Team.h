@@ -7,7 +7,7 @@
 
 class Player;
 
-class Team {
+class Team : public Serializable {
 private:
     string _name;
     array<Player *, 2> _players;
@@ -31,6 +31,10 @@ public:
     int getGameScore() const;
 
     friend std::ostream &operator<<(std::ostream &os, const Team &c);
+
+    json serialize() override;
+
+    void unserialize(json);
 
 };
 

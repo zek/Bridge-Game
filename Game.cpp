@@ -28,7 +28,6 @@ Game::Game() {
         getline(std::cin, q);
         if (q == "y" || q == "Y" || q == "yes" || q == "YES") {
             this->reset(mem);
-            init();
             _currentDeal = new Deal(getDeck(), _players, 0);
             _currentDeal->reset(mem);
             return;
@@ -53,6 +52,7 @@ Game::Game() {
         }
     }
     init();
+    makeMemento();
 }
 
 void Game::init() {
@@ -128,4 +128,7 @@ void Game::reset(Memento *mem) {
         }
         _players[i]->unserialize(mem->players[i]);
     }
+    init();
+    _teams[0]->unserialize(mem->teams[0]);
+    _teams[1]->unserialize(mem->teams[1]);
 }

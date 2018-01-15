@@ -10,18 +10,23 @@
 
 using namespace std;
 
-class Trick {
+class Trick : public Serializable {
 private:
     list<pair<Card *, int>> _cards;
 
 public:
     void addCard(Card *c, int p);
 
-	vector<Card*> getCards();
+    vector<Card *> getCards();
 
     int getWinner(Contract *c);
 
     Color::Type getStartingColor();
+
+    json serialize() override;
+
+    static Trick *unserialize(json data);
+
 };
 
 #endif // TRICK_H_INCLUDED

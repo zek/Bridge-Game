@@ -19,6 +19,10 @@ void Memento::setPlayers(array<Player *, 4> player_list) {
     for (Player *player: player_list) {
         players += player->serialize();
     }
+
+    this->teams[0] = player_list[0]->getTeam()->serialize();
+    this->teams[1] = player_list[1]->getTeam()->serialize();
+
 }
 
 void Memento::saveFile() {
@@ -29,6 +33,7 @@ void Memento::saveFile() {
     j["contractor"] = contractor;
     j["contract"] = contract;
     j["state"] = state;
+    j["teams"] = teams;
 
     std::ofstream o("history.data");
     o << j << std::endl;
@@ -45,8 +50,9 @@ Memento *Memento::loadFile(int index) {
         m->contractor = j["contractor"];
         m->contract = j["contract"];
         m->state = j["state"];
+        m->teams = j["teams"];
         return m;
-    } catch(...) {
+    } catch (...) {
         return nullptr;
     }
 
