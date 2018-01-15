@@ -1,3 +1,3 @@
 # Bridge-Game
 
-![img](Diagramm.jpg)
+![img](Diagram.jpg)
