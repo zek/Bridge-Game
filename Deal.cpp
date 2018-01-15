@@ -77,12 +77,15 @@ void Deal::playing() {
     while (_round < 13) {
         //the four players have to play a trick
         _currentTrick = new Trick();
-        std::cout << "\x1B[2J\x1B[H";
-        cout << "Round: " << _round + 1 << endl;
+        cout << AdvancedConsole::Cursor(0, 0)
+             << AdvancedConsole::Erase(AdvancedConsole::AC_ALL, AdvancedConsole::AC_SCREEN) << "Round: " << _round + 1
+             << endl;
         for (int i = 0; i < 4; i++) {
             int current_player = (_first_player + i) % 4;
             Card *card_played = _players[current_player]->playCard();
-            cout << *_players[current_player] << ": " << *card_played << endl;
+            cout << AdvancedConsole::Cursor(i+2, 0)
+                 << AdvancedConsole::Erase(AdvancedConsole::AC_ALL, AdvancedConsole::AC_LINE)
+                 << *_players[current_player] << ": " << *card_played << endl;
             _currentTrick->addCard(card_played, current_player);
         }
 
@@ -92,6 +95,10 @@ void Deal::playing() {
 
         _round++;
         makeMemento();
+
+        cout << "Press any key to start next round..." << AdvancedConsole::Erase(AdvancedConsole::AC_AFTER, AdvancedConsole::AC_SCREEN);
+        cin.ignore();
+        cin.get();
     }
 
 }

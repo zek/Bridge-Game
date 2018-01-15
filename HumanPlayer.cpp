@@ -49,10 +49,10 @@ Contract *HumanPlayer::proposeContract(Contract *current_max) {
 }
 
 Card *HumanPlayer::makeDecision(std::vector<Card *> available_cards) {
-    cout << AdvancedConsole::Cursor(2, 0) << AdvancedConsole::Erase(AdvancedConsole::AC_ALL, AdvancedConsole::AC_LINE)
+    cout << AdvancedConsole::Cursor(8, 0) << AdvancedConsole::Erase(AdvancedConsole::AC_ALL, AdvancedConsole::AC_LINE)
          << "It's Player " << *this << "'s turn." << endl;
 
-    displayHand(4);
+    displayHand(9);
 
     cout << AdvancedConsole::Erase(AdvancedConsole::AC_AFTER) << "Playable Cards: " << endl;
     int i = 0, card_no = -1;
