@@ -70,7 +70,7 @@ void Player::unserialize(nlohmann::json data) {
     _name.assign(data["name"]);
     _hand.clear();
     for (const auto &c: data["hand"]) {
-        _hand.push_back(Card::get(c[1]));
+        _hand.push_back(Card::get(c));
     }
 }
 
