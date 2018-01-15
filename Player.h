@@ -11,38 +11,37 @@
 #include "Trick.h"
 #include "Contract.h"
 #include "Game.h"
+#include "Serializable.h"
+#include "Memento.h"
+#include "misc.h"
 
 class Game;
+
 class Team;
 
 using namespace std;
 
-class Player {
+class Player : public Serializable {
 protected:
     vector<Card *> _hand;
     Team *_team;
     bool _isDummy;
     string _name;
-	Game* _game;
+    Game *_game;
 
 
 public:
-	void setGame(Game* game);
+    void setGame(Game *game);
 
     void giveCard(Card *card);
 
     void discardHand();
 
-    void displayHand();
+    void displayHand(int row = 0);
 
     virtual Contract *proposeContract(Contract *current_max) = 0;
 
-
-    void discardCard(Card *pCard);
-
-    //Card *playCard(Color::Type color, Contract *contract, Trick* trick);
-
-	Card *playCard();
+    Card *playCard();
 
     virtual Card *makeDecision(std::vector<Card *> available_cards) = 0;
 
@@ -52,11 +51,18 @@ public:
 
     Team *getTeam();
 
+    string getName();
+
     std::vector<Card *> getAvailableCards(Color::Type color);
 
-	bool hasColor(Color::Type color);
+    bool hasColor(Color::Type color);
 
     friend std::ostream &operator<<(std::ostream &os, const Player &c);
+
+    void unserialize(nlohmann::json data);
+
+protected :
+    json serializeHand();
 };
 
 

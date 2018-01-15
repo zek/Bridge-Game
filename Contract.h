@@ -2,6 +2,7 @@
 #define CONTRACT_H_INCLUDED
 
 #include "Color.h"
+#include "Serializable.h"
 #include <iostream>
 
 class Contract {
@@ -25,6 +26,16 @@ public:
     Color::Type getColor() const;
 
     friend std::ostream &operator<<(std::ostream &os, const Contract &c);
+
+
+    json serialize(){
+        return json({_tricksAmount, _color});
+    }
+
+    static Contract* unserialize(json data){
+        return new Contract(data[0], data[1]);
+    }
+
 };
 
 #endif // CONTRACT_H_INCLUDED

@@ -1,0 +1,3 @@
+- getDeck && setDeck is a Singleton (creational)
+
+- 

@@ -9,12 +9,19 @@ public:
     ComputerPlayer(const string name);
 
 
+	nlohmann::json serialize() override {
+		json data;
+		data["name"] = _name;
+		data["hand"] = serializeHand();
+		data["isComputer"] = 1;
+		return data;
+	}
 
 private:
 	static int n;
    
-	Card *makeDecision(std::vector<Card *> available_cards);
-	Contract *proposeContract(Contract *current_max);
+	Card *makeDecision(std::vector<Card *> available_cards) override;
+	Contract *proposeContract(Contract *current_max) override;
 
 	bool hasGreater();
 	bool hasContractColor();

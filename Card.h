@@ -5,10 +5,11 @@
 #include "Color.h"
 #include "Contract.h"
 #include "CardValue.h"
+#include "Serializable.h"
 
 using namespace std;
 
-class Card {
+class Card : Serializable {
 private:
     CardValue::Type _value;
     Color::Type _color;
@@ -21,8 +22,11 @@ public:
 
     bool isBigger(Card *rhs, Contract *c);
 
-
     friend std::ostream &operator<<(std::ostream &os, const Card &c);
+
+    json serialize() override {
+        return json(getValue() * 4 + getColor());
+    }
 };
 
 

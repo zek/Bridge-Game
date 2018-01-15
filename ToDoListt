@@ -1,15 +1,14 @@
 The list is not in priority order
 
-
-Think of a way to implement the "dummy"
+-Think of a way to implement the "dummy"
 	The dummy is the partner of the contractor
 	For the duration of a Deal, the contractor plays his hand (when it is his turn) and the dumy's (when it is the dummy's)
 	The dummy's hand is public (everybody can see it)
 	
-Add double and redouble contracts
-
-Have better Computer players (because they are dumb AF)
+-Add double and redouble contracts
 
 Improve the user interface (display and printing)
 
-Maybe have =!= possibilities for ending game (reach a certain amount of points, do a number of deals, play for some time ...)
+-Maybe have != possibilities for ending game (reach a certain amount of points, do a number of deals, play for some time ..
+
+-History of all plays

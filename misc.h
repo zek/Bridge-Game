@@ -1,11 +1,18 @@
-#ifndef FINAL_MISC_H
-#define FINAL_MISC_H
+#ifndef BRIDGEGAME_MISC_H
+#define BRIDGEGAME_MISC_H
 
 #include  <random>
 #include  <iterator>
+#include <iostream>
+#include <fstream>
+#include <limits>
+#include <string>
+#include "advconsole/advconsole.h"
+
+using namespace std;
 
 template<typename Iter, typename RandomGenerator>
-Iter select_randomly(Iter start, Iter end, RandomGenerator& g) {
+Iter select_randomly(Iter start, Iter end, RandomGenerator &g) {
     std::uniform_int_distribution<> dis(0, std::distance(start, end) - 1);
     std::advance(start, dis(g));
     return start;
@@ -19,4 +26,8 @@ Iter select_randomly(Iter start, Iter end) {
 }
 
 
-#endif //FINAL_MISC_H
+std::istream& ignoreline(std::ifstream& in, std::ifstream::pos_type& pos);
+
+std::string getLastLine(std::ifstream& in);
+
+#endif //BRIDGEGAME_MISC_H
