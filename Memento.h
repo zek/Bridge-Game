@@ -29,11 +29,7 @@ private:
     State state;
     json teams;
 
-    json _tricksWon;
-
     void setRound(int value);
-
-    void setTeams(array<Team *, 2> teams);
 
     void setState(State value);
 

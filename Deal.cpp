@@ -1,7 +1,6 @@
 #include "Deal.h"
 
-Deal::Deal(array<Card *, 52> deck, array<Player *, 4> players, int dealer) :
-        _deck(deck),
+Deal::Deal(array<Player *, 4> players, int dealer) :
         _players(players),
         _dealer(dealer),
         _round(-1),
@@ -22,11 +21,13 @@ Contract *Deal::getContract() {
 void Deal::dealing() {
     makeMemento();
     //shuffling
-    random_shuffle(begin(_deck), end(_deck));
+
+    auto deck = Card::getDeck();
+    random_shuffle(begin(deck), end(deck));
 
     //distribution
     int i = (_dealer + 1) % 4;
-    for (Card *c: _deck) {
+    for (Card *c: deck) {
         _players[i]->giveCard(c);
         i = (i + 1) % 4;
     }

@@ -28,7 +28,6 @@ private:
     int _contractor;
     int _round;
     int _first_player;
-    array<Card *, 52> _deck;
 
     State _state;
 
@@ -50,7 +49,7 @@ public:
 
     Contract *getContract();
 
-    Deal(array<Card *, 52> deck, array<Player *, 4> players, int dealer);
+    Deal(array<Player *, 4> players, int dealer);
 
     void play();
 

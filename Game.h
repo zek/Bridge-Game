@@ -17,18 +17,11 @@ class Game {
 private:
     array<Player *, 4> _players;
     array<Team *, 2> _teams;
-    static bool _deckSet;
-    static array<Card *, 52> _deck;
 	Deal* _currentDeal;
-
-    static void setDeck();
-
     void setTeams();
 
 public:
 	Deal* getCurrentDeal();
-
-    static array<Card *, 52> getDeck();
 
     Game();
     Game(array<Player *, 4> players);

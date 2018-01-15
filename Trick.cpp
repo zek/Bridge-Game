@@ -47,11 +47,10 @@ json Trick::serialize() {
 }
 
 Trick *Trick::unserialize(json data) {
-    auto deck = Game::getDeck();
     Trick *t = new Trick;
 
     for (const auto &c: data) {
-        t->addCard(deck[c[1]], c[0]);
+        t->addCard(Card::get(c[1]), c[0]);
     }
 
     return t;

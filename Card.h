@@ -13,6 +13,9 @@ class Card : Serializable {
 private:
     CardValue::Type _value;
     Color::Type _color;
+    static bool _deckSet;
+    static array<Card *, 52> _deck;
+
 public:
     Card(CardValue::Type value, Color::Type color);
 
@@ -24,9 +27,13 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const Card &c);
 
-    json serialize() override {
-        return json(getValue() * 4 + getColor());
-    }
+    json serialize() override;
+
+    static void setDeck();
+
+    static array<Card *, 52> getDeck();
+
+    static Card* get(const int id);
 };
 
 

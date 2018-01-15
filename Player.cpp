@@ -67,11 +67,10 @@ Card *Player::playCard() {
 }
 
 void Player::unserialize(nlohmann::json data) {
-    auto deck = Game::getDeck();
     _name.assign(data["name"]);
     _hand.clear();
     for (const auto &c: data["hand"]) {
-        _hand.push_back(deck[c]);
+        _hand.push_back(Card::get(c[1]));
     }
 }
 

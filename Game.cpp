@@ -3,10 +3,6 @@
 #include "HumanPlayer.h"
 #include "Memento.h"
 #include "misc.h"
-
-array<Card *, 52> Game::_deck = {};
-bool Game::_deckSet = false;
-
 Deal *Game::getCurrentDeal() {
     return _currentDeal;
 }
@@ -28,7 +24,7 @@ Game::Game() {
         getline(std::cin, q);
         if (q == "y" || q == "Y" || q == "yes" || q == "YES") {
             this->reset(mem);
-            _currentDeal = new Deal(getDeck(), _players, 0);
+            _currentDeal = new Deal(_players, 0);
             _currentDeal->reset(mem);
             return;
         }
@@ -58,7 +54,6 @@ Game::Game() {
 void Game::init() {
     _currentDeal = nullptr;
     setTeams();
-    setDeck();
 
     cout << endl;
     for (const auto team : _teams) {
@@ -72,16 +67,6 @@ void Game::init() {
     }
 }
 
-void Game::setDeck() {
-    int i = 0;
-    for (const auto cardValue : CardValue::All) {
-        for (const auto color : Color::All) {
-            _deck[i] = new Card(cardValue, color);
-            i++;
-        }
-    }
-    _deckSet = true;
-}
 
 void Game::setTeams() {
     Team *team1 = new Team("Team 1", _players[0], _players[2]);
@@ -94,7 +79,7 @@ void Game::play() {
     bool isFinished = false;
     while (!isFinished) {
         if (!_currentDeal)
-            _currentDeal = new Deal(getDeck(), _players, dealer);
+            _currentDeal = new Deal(_players, dealer);
         _currentDeal->play();
 
         cout << _teams[0]->getName() << " : " << _teams[0]->getGameScore() << endl;
@@ -103,13 +88,6 @@ void Game::play() {
         isFinished = true;
         _currentDeal = nullptr;
     }
-}
-
-array<Card *, 52> Game::getDeck() {
-    if (!_deckSet) {
-        setDeck();
-    }
-    return Game::_deck;
 }
 
 Memento *Game::makeMemento() {
