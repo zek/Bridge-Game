@@ -16,7 +16,6 @@ enum class State;
 class Deal;
 class Contract;
 class Player;
-class Team;
 
 class Memento {
 private:
@@ -43,7 +42,6 @@ private:
 
     friend class Deal;
     friend class Game;
-    friend class Team;
 
 public:
     static Memento* loadFile(int index = -1);
