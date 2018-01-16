@@ -6,7 +6,6 @@
 
 class ComputerPlayer : public Player {
 public:
-    ComputerPlayer(const string name);
 
 
 	nlohmann::json serialize() override {

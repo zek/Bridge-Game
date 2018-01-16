@@ -6,7 +6,6 @@
 
 class HumanPlayer : public Player {
 public:
-    HumanPlayer(const string name) : Player(name) {}
 
     nlohmann::json serialize() override {
         json data;

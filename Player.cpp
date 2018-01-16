@@ -34,7 +34,7 @@ void Player::setTeam(Team *team) {
     _team = team;
 }
 
-Player::Player(const string name) : _name(name) {
+Player::Player() {
     _isDummy = false;
 }
 
@@ -84,4 +84,8 @@ json Player::serializeHand() {
 
 string Player::getName() {
     return _name;
+}
+
+void Player::setName(const string name) {
+    _name = name;
 }

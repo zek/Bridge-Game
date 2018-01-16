@@ -9,6 +9,7 @@
 #include "Memento.h"
 
 class Deal;
+
 class Team;
 
 using namespace std;
@@ -17,22 +18,27 @@ class Game {
 private:
     array<Player *, 4> _players;
     array<Team *, 2> _teams;
-	Deal* _currentDeal;
+    Deal *_currentDeal;
+
     void setTeams();
 
 public:
-	Deal* getCurrentDeal();
+    Deal *getCurrentDeal();
 
     Game();
+
     Game(array<Player *, 4> players);
 
     void init();
 
     void play();
 
-	Memento *makeMemento();
+    Memento *makeMemento();
 
-	void reset(Memento *mem);
+    void reset(Memento *mem);
+
+    Player *createPlayer(const int player_type);
+
 };
 
 

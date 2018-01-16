@@ -45,7 +45,7 @@ public:
 
     virtual Card *makeDecision(std::vector<Card *> available_cards) = 0;
 
-    Player(const string name);
+    Player();
 
     void setTeam(Team *team);
 
@@ -60,6 +60,8 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const Player &c);
 
     void unserialize(nlohmann::json data);
+
+    void setName(const string name);
 
 protected :
     json serializeHand();
