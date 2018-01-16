@@ -37,7 +37,7 @@ public:
 
     void reset(Memento *mem);
 
-    Player *createPlayer(const int player_type);
+    Player *createPlayer(int player_type);
 
 };
 

@@ -86,6 +86,6 @@ string Player::getName() {
     return _name;
 }
 
-void Player::setName(const string name) {
+void Player::setName(string name) {
     _name = name;
 }

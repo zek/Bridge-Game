@@ -61,7 +61,7 @@ public:
 
     void unserialize(nlohmann::json data);
 
-    void setName(const string name);
+    void setName(string name);
 
 protected :
     json serializeHand();
