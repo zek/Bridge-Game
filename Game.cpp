@@ -39,12 +39,15 @@ Game::Game() {
     string name;
     for (int i = 0; i < 4; i++) {
         cout << "Player " << list[i] << " : ";
+        getline(std::cin, name);
         bool isComputer = name.empty() || name == "computer";
         if (isComputer) name = "Computer " + list[i];
 
         _players[i] = createPlayer(isComputer);
         _players[i]->setName(name);
     }
+
+
     init();
     makeMemento();
 }
@@ -105,7 +108,7 @@ void Game::reset(Memento *mem) {
     _teams[1]->unserialize(mem->teams[1]);
 }
 
-Player *Game::createPlayer(const int player_type) {
+Player *Game::createPlayer(int player_type) {
     if (player_type == 0) {
         return new HumanPlayer;
     } else {
